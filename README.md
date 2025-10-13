@@ -103,9 +103,9 @@
     <script>
         // --- CONFIGURATION DATA ---
         // Public Key (User ID) is correct: bSgwpRuVeEky48mPe
-        // SERVICE_ID is corrected to match your service: service_7lbsq24
         const EMAILJS_USER_ID = 'bSgwpRuVeEky48mPe'; 
-        const SERVICE_ID = 'service_7lbsq24'; 
+        // 🚀 FINAL FIX: Service ID updated to the new, authorized key: service_duw9hhb
+        const SERVICE_ID = 'service_duw9hhb'; 
         const PRIMARY_TEMPLATE_ID = 'of2vt65'; 
         const CONFIRMATION_TEMPLATE_ID = '2a7qx72'; 
         const WARRANTY_EMAIL = 'warranty@peakmhc.com';
