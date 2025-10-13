@@ -104,7 +104,7 @@
         const EMAILJS_USER_ID = 'YOUR_EMAILJS_USER_ID'; 
         const SERVICE_ID = 'service_warranty_submissions';
         const PRIMARY_TEMPLATE_ID = 'template_warranty_report';
-        // Updated to use the confirmed template ID for the Auto-Response
+        // Confirmed template ID for the Auto-Response
         const CONFIRMATION_TEMPLATE_ID = '2a7qx72'; 
         const WARRANTY_EMAIL = 'warranty@peakmhc.com';
 
@@ -359,7 +359,7 @@
 
             const finalReportText = issuesReport || 'No actionable issues with description were reported on the 30-Day Checklist.';
             
-            // --- FIX: Adjust variable names to match the user's template casing (e.g., totalissues, SubmissionDate)
+            // --- Final Variables for EmailJS Templates ---
             return {
                 formData,
                 issuesList,
@@ -371,10 +371,10 @@
                     serialNumber: formData.serialNumber,
                     contactPhone: formData.contactPhone,
                     email: formData.email,
-                    // Variables adjusted to match user's template casing:
-                    SubmissionDate: submissionDate, // Matches {{SubmissionDate}} in user's template
+                    // Variables adjusted to match user's final template casing:
+                    SubmissionDate: submissionDate, // Matches {{SubmissionDate}} in user's templates
                     toEmail: WARRANTY_EMAIL, 
-                    totalissues: issuesList.length, // Matches {{totalissues}} in user's template
+                    totalissues: issuesList.length, // Matches {{totalissues}} in user's templates
                     issuesReport: finalReportText,
                 }
             };
@@ -393,9 +393,12 @@
             // 1. Validate Homeowner Info
             const infoError = validateHomeownerInfo(formData);
             if (infoError) {
+                // Show modal to display error
                 setMessage(messageDiv, `❌ Error: ${infoError}`, 'bg-red-100 text-red-700');
                 submitBtn.disabled = true;
                 modal.classList.remove('hidden');
+                // Ensure report preview is empty
+                document.getElementById('report-preview').value = "";
                 return;
             }
 
@@ -416,9 +419,10 @@
                 submitBtn.disabled = false;
             }
             
-            // Use the mixed-case SubmissionDate for display here
+            // Set date and report preview
             document.getElementById('submission-date').textContent = `Date of Submission: ${emailParams.SubmissionDate}`;
             document.getElementById('report-preview').value = emailParams.issuesReport;
+            
             messageDiv.classList.add('hidden'); // Clear previous messages
             submitBtn.textContent = `Submit Warranty Request (${issuesList.length} Issues)`;
             
@@ -429,7 +433,6 @@
          * Sets the submission status message in the modal.
          */
         const setMessage = (element, text, classes) => {
-            // Updated to include 'bg-yellow' for the new warning state
             element.classList.remove('hidden', 'bg-green-100', 'text-green-700', 'bg-red-100', 'text-red-700', 'bg-blue-100', 'text-blue-700', 'bg-yellow-100', 'text-yellow-700');
             element.classList.add(classes);
             element.innerHTML = text;
@@ -444,8 +447,8 @@
             const submitBtn = document.getElementById('submit-button');
             
             // --- CRITICAL CHECK: Placeholder IDs ---
-            if (EMAILJS_USER_ID === 'YOUR_EMAILJS_USER_ID' || SERVICE_ID.includes('service_') || PRIMARY_TEMPLATE_ID.includes('template_')) {
-                console.error("EmailJS Error: Placeholder IDs detected.");
+            if (EMAILJS_USER_ID.includes('YOUR_') || SERVICE_ID.includes('service_') || PRIMARY_TEMPLATE_ID.includes('template_')) {
+                console.error("EmailJS Error: Placeholder IDs detected. Please replace them.");
                 setMessage(messageDiv, '❌ Submission failed: Please replace the **EmailJS Placeholder IDs** in the script\'s CONFIGURATION DATA.', 'bg-red-100 text-red-700');
                 return; // Exit without trying to send
             }
@@ -481,7 +484,13 @@
             } catch (primaryError) {
                 // Primary failed immediately - this is a hard failure
                 console.error('EmailJS Primary Submission Error:', primaryError);
-                setMessage(messageDiv, `❌ Submission failed. Error: ${primaryError.text || JSON.stringify(primaryError) || 'Unknown network error'}. Please verify your EmailJS setup.`, 'bg-red-100 text-red-700');
+                // The stall likely happens here. Added specific error check for missing data.
+                let errorText = primaryError.text || JSON.stringify(primaryError) || 'Unknown network error';
+                if (errorText.includes('parameter') || errorText.includes('empty value')) {
+                    errorText = 'Template error: One of the required fields (like Email, Name, or Lot Number) may be missing a value in your template.';
+                }
+
+                setMessage(messageDiv, `❌ Submission failed. Error: ${errorText}. Please verify your EmailJS setup.`, 'bg-red-100 text-red-700');
                 submitBtn.textContent = 'Submit Warranty Request';
             } finally {
                 // **CRITICAL FIX:** This block ensures the button is re-enabled or kept in the success state.
