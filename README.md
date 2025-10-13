@@ -18,10 +18,10 @@
 </head>
 <body class="bg-gray-100 p-4 sm:p-8">
     <div class="max-w-4xl mx-auto">
-        <!-- CONFIGURATION WARNING BLOCK -->
+        <!-- CONFIGURATION WARNING BLOCK - This is now hidden as keys are inserted -->
         <div id="config-warning" class="hidden mb-6 p-4 rounded-xl shadow-lg bg-red-500 text-white font-bold text-center">
             <h2 class="text-xl">⚠️ CRITICAL CONFIGURATION ERROR ⚠️</h2>
-            <p class="text-sm mt-1">Please replace the placeholder value for **EMAILJS_USER_ID** in the script's **CONFIGURATION DATA** section before using the app.</p>
+            <p class="text-sm mt-1">Placeholder error detected. Please ensure all EmailJS keys are correct.</p>
         </div>
 
         <header class="text-center mb-8">
@@ -106,7 +106,7 @@
 
     <script>
         // --- CONFIGURATION DATA ---
-        // PUBLIC KEY INSERTED HERE
+        // *** FINAL CORRECTED KEYS ARE NOW INSERTED ***
         const EMAILJS_USER_ID = 'bSgwpRuVeEky48mPe'; 
         const SERVICE_ID = 'service_warranty_submissions'; 
         const PRIMARY_TEMPLATE_ID = 'of2vt65'; 
