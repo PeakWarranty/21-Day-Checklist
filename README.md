@@ -20,8 +20,8 @@
     <div class="max-w-4xl mx-auto">
         <!-- CONFIGURATION WARNING BLOCK -->
         <div id="config-warning" class="hidden mb-6 p-4 rounded-xl shadow-lg bg-red-500 text-white font-bold text-center">
-            <h2 class="text-xl">⚠️ CONFIGURATION ERROR ⚠️</h2>
-            <p class="text-sm mt-1">Please replace all placeholder IDs in the script's **CONFIGURATION DATA** section before using the app.</p>
+            <h2 class="text-xl">⚠️ CRITICAL CONFIGURATION ERROR ⚠️</h2>
+            <p class="text-sm mt-1">Please replace the placeholder value for **EMAILJS_USER_ID** in the script's **CONFIGURATION DATA** section before using the app.</p>
         </div>
 
         <header class="text-center mb-8">
@@ -106,12 +106,12 @@
 
     <script>
         // --- CONFIGURATION DATA ---
-        // !!! IMPORTANT: REPLACE THESE PLACEHOLDERS WITH YOUR ACTUAL EMAILJS CREDENTIALS !!!
+        // I have pre-filled the Service and Template IDs based on our conversation.
+        // !!! YOU MUST REPLACE 'YOUR_EMAILJS_USER_ID' WITH YOUR ACTUAL KEY !!!
         const EMAILJS_USER_ID = 'YOUR_EMAILJS_USER_ID'; 
-        const SERVICE_ID = 'service_warranty_submissions';
-        const PRIMARY_TEMPLATE_ID = 'template_warranty_report';
-        // Confirmed template ID for the Auto-Response
-        const CONFIRMATION_TEMPLATE_ID = '2a7qx72'; 
+        const SERVICE_ID = 'service_warranty_submissions'; // Verified template prefix
+        const PRIMARY_TEMPLATE_ID = 'of2vt65'; // Your verified primary template ID
+        const CONFIRMATION_TEMPLATE_ID = '2a7qx72'; // Your verified auto-response template ID
         const WARRANTY_EMAIL = 'warranty@peakmhc.com';
 
         const CHECKLIST_SECTIONS = [
@@ -454,10 +454,10 @@
             const messageDiv = document.getElementById('submission-message');
             const submitBtn = document.getElementById('submit-button');
             
-            // --- CRITICAL CHECK: Placeholder IDs (Visual check on load is better) ---
-            if (EMAILJS_USER_ID.includes('YOUR_') || SERVICE_ID.includes('service_')) {
-                console.error("EmailJS Error: Placeholder IDs detected. Cannot submit.");
-                setMessage(messageDiv, '❌ Submission failed: Please replace the **EmailJS Placeholder IDs** in the script.', 'bg-red-100 text-red-700');
+            // --- CRITICAL CHECK: Placeholder IDs ---
+            if (EMAILJS_USER_ID.includes('YOUR_')) {
+                console.error("EmailJS Error: Placeholder USER ID detected. Cannot submit.");
+                setMessage(messageDiv, '❌ Submission failed: Please replace the **EMAILJS_USER_ID** placeholder in the script.', 'bg-red-100 text-red-700');
                 return; 
             }
 
@@ -514,8 +514,8 @@
              const mainContent = document.getElementById('main-content');
              const reviewBtn = document.getElementById('review-button');
              
-             // Check if any of the critical placeholders exist
-             if (EMAILJS_USER_ID.includes('YOUR_') || SERVICE_ID.includes('service_') || PRIMARY_TEMPLATE_ID.includes('template_')) {
+             // Check only for the User ID placeholder since Service/Template IDs are now filled.
+             if (EMAILJS_USER_ID.includes('YOUR_')) {
                 warningDiv.classList.remove('hidden');
                 mainContent.classList.add('opacity-50', 'pointer-events-none');
                 reviewBtn.disabled = true;
@@ -523,7 +523,7 @@
                  warningDiv.classList.add('hidden');
                  mainContent.classList.remove('opacity-50', 'pointer-events-none');
                  reviewBtn.disabled = false;
-                 // Initialize EmailJS ONLY if IDs are set
+                 // Initialize EmailJS ONLY if User ID is set
                  if (window.emailjs) {
                      window.emailjs.init(EMAILJS_USER_ID);
                  } else {
