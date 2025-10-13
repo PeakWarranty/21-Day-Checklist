@@ -438,6 +438,15 @@
             const messageDiv = document.getElementById('submission-message');
             const submitBtn = document.getElementById('submit-button');
             
+            // --- FIX: Check for placeholder IDs before starting submission ---
+            if (EMAILJS_USER_ID === 'YOUR_EMAILJS_USER_ID' || SERVICE_ID.includes('service_') || PRIMARY_TEMPLATE_ID.includes('template_')) {
+                console.error("EmailJS Error: Placeholder IDs detected. Please replace them.");
+                setMessage(messageDiv, '❌ Submission failed: Please replace the **EmailJS Placeholder IDs** in the script\'s CONFIGURATION DATA.', 'bg-red-100 text-red-700');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit Warranty Request';
+                return;
+            }
+
             submitBtn.disabled = true;
             submitBtn.textContent = 'Sending...';
             setMessage(messageDiv, '⏳ Sending request...', 'bg-blue-100 text-blue-700');
@@ -463,8 +472,9 @@
                 submitBtn.textContent = 'Submitted!';
                 
             } catch (error) {
+                // This catch block ensures the button is re-enabled on any failure
                 console.error('EmailJS Submission Error:', error);
-                setMessage(messageDiv, `❌ Submission failed. Error: ${error.text || error}. Please try again later.`, 'bg-red-100 text-red-700');
+                setMessage(messageDiv, `❌ Submission failed. Error: ${error.text || JSON.stringify(error) || 'Unknown error'}. Please verify your EmailJS setup.`, 'bg-red-100 text-red-700');
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Submit Warranty Request';
             }
