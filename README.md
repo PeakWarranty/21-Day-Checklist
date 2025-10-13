@@ -18,11 +18,7 @@
 </head>
 <body class="bg-gray-100 p-4 sm:p-8">
     <div class="max-w-4xl mx-auto">
-        <!-- CONFIGURATION WARNING BLOCK - This is now hidden as keys are inserted -->
-        <div id="config-warning" class="hidden mb-6 p-4 rounded-xl shadow-lg bg-red-500 text-white font-bold text-center">
-            <h2 class="text-xl">⚠️ CRITICAL CONFIGURATION ERROR ⚠️</h2>
-            <p class="text-sm mt-1">Placeholder error detected. Please ensure all EmailJS keys are correct.</p>
-        </div>
+        <!-- The configuration warning div has been removed -->
 
         <header class="text-center mb-8">
             <h1 class="text-4xl font-extrabold text-gray-900">
@@ -106,7 +102,7 @@
 
     <script>
         // --- CONFIGURATION DATA ---
-        // *** FINAL CORRECTED KEYS ARE NOW INSERTED ***
+        // Your public key is inserted here for initialization
         const EMAILJS_USER_ID = 'bSgwpRuVeEky48mPe'; 
         const SERVICE_ID = 'service_warranty_submissions'; 
         const PRIMARY_TEMPLATE_ID = 'of2vt65'; 
@@ -453,13 +449,6 @@
             const messageDiv = document.getElementById('submission-message');
             const submitBtn = document.getElementById('submit-button');
             
-            // --- CRITICAL CHECK: Placeholder IDs ---
-            if (EMAILJS_USER_ID.includes('YOUR_')) {
-                console.error("EmailJS Error: Placeholder USER ID detected. Cannot submit.");
-                setMessage(messageDiv, '❌ Submission failed: Please replace the **EMAILJS_USER_ID** placeholder in the script.', 'bg-red-100 text-red-700');
-                return; 
-            }
-
             submitBtn.disabled = true;
             submitBtn.textContent = 'Sending...';
             setMessage(messageDiv, '⏳ Sending request...', 'bg-blue-100 text-blue-700');
@@ -506,53 +495,33 @@
         };
         
         /**
-         * Checks for placeholder IDs and shows a critical warning if found.
+         * Initializes EmailJS and performs initial setup.
          */
-        const checkConfig = () => {
-             const warningDiv = document.getElementById('config-warning');
-             const mainContent = document.getElementById('main-content');
-             const reviewBtn = document.getElementById('review-button');
-             
-             // Check only for the User ID placeholder since Service/Template IDs are now filled.
-             if (EMAILJS_USER_ID.includes('YOUR_')) {
-                warningDiv.classList.remove('hidden');
-                mainContent.classList.add('opacity-50', 'pointer-events-none');
-                reviewBtn.disabled = true;
-             } else {
-                 warningDiv.classList.add('hidden');
-                 mainContent.classList.remove('opacity-50', 'pointer-events-none');
-                 reviewBtn.disabled = false;
-                 // Initialize EmailJS ONLY if User ID is set
-                 if (window.emailjs) {
-                     window.emailjs.init(EMAILJS_USER_ID);
-                 } else {
-                     console.error("EmailJS script failed to load.");
-                 }
+        const initApp = () => {
+             // Initialize EmailJS
+             if (window.emailjs && EMAILJS_USER_ID) {
+                 window.emailjs.init(EMAILJS_USER_ID);
+             } else if (!EMAILJS_USER_ID) {
+                 console.error("CRITICAL: EMAILJS_USER_ID is missing.");
              }
+
+             // Setup
+             initializeChecklistState();
+             renderChecklist();
+             
+             // Event Listeners
+             document.getElementById('community').addEventListener('change', handleCommunityChange);
+             document.getElementById('review-button').addEventListener('click', openReviewModal);
+             
+             // Modal Listeners
+             document.getElementById('submit-button').addEventListener('click', handleSubmission);
+             document.getElementById('close-modal').addEventListener('click', () => {
+                 document.getElementById('review-modal').classList.add('hidden');
+             });
         }
 
         // --- Initialization ---
-
-        window.onload = () => {
-            // Setup
-            initializeChecklistState();
-            renderChecklist();
-            
-            // Check config and initialize EmailJS if keys are present
-            checkConfig();
-            
-            // Event Listeners
-            document.getElementById('community').addEventListener('change', handleCommunityChange);
-            document.getElementById('review-button').addEventListener('click', openReviewModal);
-            
-            // Modal Listeners
-            document.getElementById('submit-button').addEventListener('click', handleSubmission);
-            document.getElementById('close-modal').addEventListener('click', () => {
-                document.getElementById('review-modal').classList.add('hidden');
-                // Re-enable form after closing modal, in case it was disabled due to initial error
-                document.getElementById('review-button').disabled = false;
-            });
-        };
+        window.onload = initApp;
     </script>
 </body>
 </html>
