@@ -102,9 +102,10 @@
 
     <script>
         // --- CONFIGURATION DATA ---
-        // Your public key is inserted here for initialization
+        // Public Key (User ID) is correct: bSgwpRuVeEky48mPe
+        // SERVICE_ID is corrected to match your service: service_7lbsq24
         const EMAILJS_USER_ID = 'bSgwpRuVeEky48mPe'; 
-        const SERVICE_ID = 'service_warranty_submissions'; 
+        const SERVICE_ID = 'service_7lbsq24'; 
         const PRIMARY_TEMPLATE_ID = 'of2vt65'; 
         const CONFIRMATION_TEMPLATE_ID = '2a7qx72'; 
         const WARRANTY_EMAIL = 'warranty@peakmhc.com';
