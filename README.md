@@ -104,7 +104,8 @@
         const EMAILJS_USER_ID = 'YOUR_EMAILJS_USER_ID'; 
         const SERVICE_ID = 'service_warranty_submissions';
         const PRIMARY_TEMPLATE_ID = 'template_warranty_report';
-        const CONFIRMATION_TEMPLATE_ID = 'template_auto_response';
+        // Updated to use the confirmed template ID for the Auto-Response
+        const CONFIRMATION_TEMPLATE_ID = '2a7qx72'; 
         const WARRANTY_EMAIL = 'warranty@peakmhc.com';
 
         const CHECKLIST_SECTIONS = [
@@ -358,6 +359,7 @@
 
             const finalReportText = issuesReport || 'No actionable issues with description were reported on the 30-Day Checklist.';
             
+            // --- FIX: Adjust variable names to match the user's template casing (e.g., totalissues, SubmissionDate)
             return {
                 formData,
                 issuesList,
@@ -369,9 +371,10 @@
                     serialNumber: formData.serialNumber,
                     contactPhone: formData.contactPhone,
                     email: formData.email,
-                    submissionDate: submissionDate,
+                    // Variables adjusted to match user's template casing:
+                    SubmissionDate: submissionDate, // Matches {{SubmissionDate}} in user's template
                     toEmail: WARRANTY_EMAIL, 
-                    totalIssues: issuesList.length,
+                    totalissues: issuesList.length, // Matches {{totalissues}} in user's template
                     issuesReport: finalReportText,
                 }
             };
@@ -413,7 +416,8 @@
                 submitBtn.disabled = false;
             }
             
-            document.getElementById('submission-date').textContent = `Date of Submission: ${emailParams.submissionDate}`;
+            // Use the mixed-case SubmissionDate for display here
+            document.getElementById('submission-date').textContent = `Date of Submission: ${emailParams.SubmissionDate}`;
             document.getElementById('report-preview').value = emailParams.issuesReport;
             messageDiv.classList.add('hidden'); // Clear previous messages
             submitBtn.textContent = `Submit Warranty Request (${issuesList.length} Issues)`;
