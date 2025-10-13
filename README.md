@@ -18,6 +18,12 @@
 </head>
 <body class="bg-gray-100 p-4 sm:p-8">
     <div class="max-w-4xl mx-auto">
+        <!-- CONFIGURATION WARNING BLOCK -->
+        <div id="config-warning" class="hidden mb-6 p-4 rounded-xl shadow-lg bg-red-500 text-white font-bold text-center">
+            <h2 class="text-xl">⚠️ CONFIGURATION ERROR ⚠️</h2>
+            <p class="text-sm mt-1">Please replace all placeholder IDs in the script's **CONFIGURATION DATA** section before using the app.</p>
+        </div>
+
         <header class="text-center mb-8">
             <h1 class="text-4xl font-extrabold text-gray-900">
                 30-Day Move-In Warranty Checklist
@@ -27,7 +33,7 @@
             </p>
         </header>
 
-        <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-2xl border border-gray-200">
+        <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-2xl border border-gray-200" id="main-content">
             <form id="warranty-form" class="space-y-6">
                 <!-- Homeowner Information -->
                 <div class="bg-blue-50 border border-blue-200 p-4 rounded-xl space-y-3">
@@ -354,7 +360,8 @@
 
             const issuesReport = issuesList.map((item, index) => {
                 const locationDetail = item.location ? ` (Location: ${item.location})` : '';
-                return `${index + 1}. ${item.item}${locationDetail}\n   Description: ${item.notes}`;
+                // Use markdown formatting in the report string for better readability in email
+                return `**${index + 1}. ${item.item}${locationDetail}**\nDescription: ${item.notes}`;
             }).join('\n\n');
 
             const finalReportText = issuesReport || 'No actionable issues with description were reported on the 30-Day Checklist.';
@@ -446,11 +453,11 @@
             const messageDiv = document.getElementById('submission-message');
             const submitBtn = document.getElementById('submit-button');
             
-            // --- CRITICAL CHECK: Placeholder IDs ---
-            if (EMAILJS_USER_ID.includes('YOUR_') || SERVICE_ID.includes('service_') || PRIMARY_TEMPLATE_ID.includes('template_')) {
-                console.error("EmailJS Error: Placeholder IDs detected. Please replace them.");
-                setMessage(messageDiv, '❌ Submission failed: Please replace the **EmailJS Placeholder IDs** in the script\'s CONFIGURATION DATA.', 'bg-red-100 text-red-700');
-                return; // Exit without trying to send
+            // --- CRITICAL CHECK: Placeholder IDs (Visual check on load is better) ---
+            if (EMAILJS_USER_ID.includes('YOUR_') || SERVICE_ID.includes('service_')) {
+                console.error("EmailJS Error: Placeholder IDs detected. Cannot submit.");
+                setMessage(messageDiv, '❌ Submission failed: Please replace the **EmailJS Placeholder IDs** in the script.', 'bg-red-100 text-red-700');
+                return; 
             }
 
             submitBtn.disabled = true;
@@ -460,7 +467,7 @@
             if (!window.emailjs) {
                 console.error("EmailJS not loaded.");
                 setMessage(messageDiv, '❌ Submission failed: EmailJS library not loaded.', 'bg-red-100 text-red-700');
-                return; // Exit without trying to send
+                return; 
             }
             
             try {
@@ -484,40 +491,65 @@
             } catch (primaryError) {
                 // Primary failed immediately - this is a hard failure
                 console.error('EmailJS Primary Submission Error:', primaryError);
-                // The stall likely happens here. Added specific error check for missing data.
-                let errorText = primaryError.text || JSON.stringify(primaryError) || 'Unknown network error';
+                
+                let errorText = primaryError.text || JSON.stringify(primaryError) || 'Unknown Network Error';
                 if (errorText.includes('parameter') || errorText.includes('empty value')) {
-                    errorText = 'Template error: One of the required fields (like Email, Name, or Lot Number) may be missing a value in your template.';
+                    errorText = 'Template configuration error: A variable is likely misspelled or missing in one of your EmailJS templates.';
                 }
 
-                setMessage(messageDiv, `❌ Submission failed. Error: ${errorText}. Please verify your EmailJS setup.`, 'bg-red-100 text-red-700');
+                setMessage(messageDiv, `❌ Submission failed. Error: ${errorText}`, 'bg-red-100 text-red-700');
                 submitBtn.textContent = 'Submit Warranty Request';
             } finally {
-                // **CRITICAL FIX:** This block ensures the button is re-enabled or kept in the success state.
+                // **CRITICAL FIX:** This block guarantees the button is released.
                 submitBtn.disabled = false;
             }
         };
+        
+        /**
+         * Checks for placeholder IDs and shows a critical warning if found.
+         */
+        const checkConfig = () => {
+             const warningDiv = document.getElementById('config-warning');
+             const mainContent = document.getElementById('main-content');
+             const reviewBtn = document.getElementById('review-button');
+             
+             if (EMAILJS_USER_ID.includes('YOUR_') || SERVICE_ID.includes('service_') || PRIMARY_TEMPLATE_ID.includes('template_')) {
+                warningDiv.classList.remove('hidden');
+                mainContent.classList.add('opacity-50', 'pointer-events-none');
+                reviewBtn.disabled = true;
+             } else {
+                 warningDiv.classList.add('hidden');
+                 mainContent.classList.remove('opacity-50', 'pointer-events-none');
+                 reviewBtn.disabled = false;
+                 // Initialize EmailJS ONLY if IDs are set
+                 if (window.emailjs) {
+                     window.emailjs.init(EMAILJS_USER_ID);
+                 } else {
+                     console.error("EmailJS script failed to load.");
+                 }
+             }
+        }
 
         // --- Initialization ---
 
         window.onload = () => {
-            // Initialize EmailJS
-            if (window.emailjs) {
-                window.emailjs.init(EMAILJS_USER_ID);
-            } else {
-                console.error("EmailJS script failed to load.");
-            }
-            
             // Setup
             initializeChecklistState();
             renderChecklist();
             
+            // Check config and initialize EmailJS if keys are present
+            checkConfig();
+            
             // Event Listeners
             document.getElementById('community').addEventListener('change', handleCommunityChange);
             document.getElementById('review-button').addEventListener('click', openReviewModal);
+            
+            // Modal Listeners
             document.getElementById('submit-button').addEventListener('click', handleSubmission);
             document.getElementById('close-modal').addEventListener('click', () => {
                 document.getElementById('review-modal').classList.add('hidden');
+                // Re-enable form after closing modal, in case it was disabled due to initial error
+                document.getElementById('review-button').disabled = false;
             });
         };
     </script>
