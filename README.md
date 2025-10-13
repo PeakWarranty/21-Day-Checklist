@@ -332,6 +332,7 @@
         
         /**
          * Compiles all submission data and the formatted report.
+         * @returns {object} Contains form data, issues list, and email parameters.
          */
         const compileSubmissionData = () => {
             const form = document.getElementById('warranty-form');
@@ -513,6 +514,7 @@
              const mainContent = document.getElementById('main-content');
              const reviewBtn = document.getElementById('review-button');
              
+             // Check if any of the critical placeholders exist
              if (EMAILJS_USER_ID.includes('YOUR_') || SERVICE_ID.includes('service_') || PRIMARY_TEMPLATE_ID.includes('template_')) {
                 warningDiv.classList.remove('hidden');
                 mainContent.classList.add('opacity-50', 'pointer-events-none');
