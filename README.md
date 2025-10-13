@@ -425,7 +425,8 @@
          * Sets the submission status message in the modal.
          */
         const setMessage = (element, text, classes) => {
-            element.classList.remove('hidden', 'bg-green-100', 'text-green-700', 'bg-red-100', 'text-red-700', 'bg-blue-100', 'text-blue-700');
+            // Updated to include 'bg-yellow' for the new warning state
+            element.classList.remove('hidden', 'bg-green-100', 'text-green-700', 'bg-red-100', 'text-red-700', 'bg-blue-100', 'text-blue-700', 'bg-yellow-100', 'text-yellow-700');
             element.classList.add(classes);
             element.innerHTML = text;
         };
@@ -438,13 +439,11 @@
             const messageDiv = document.getElementById('submission-message');
             const submitBtn = document.getElementById('submit-button');
             
-            // --- FIX: Check for placeholder IDs before starting submission ---
+            // --- CRITICAL CHECK: Placeholder IDs ---
             if (EMAILJS_USER_ID === 'YOUR_EMAILJS_USER_ID' || SERVICE_ID.includes('service_') || PRIMARY_TEMPLATE_ID.includes('template_')) {
-                console.error("EmailJS Error: Placeholder IDs detected. Please replace them.");
+                console.error("EmailJS Error: Placeholder IDs detected.");
                 setMessage(messageDiv, '❌ Submission failed: Please replace the **EmailJS Placeholder IDs** in the script\'s CONFIGURATION DATA.', 'bg-red-100 text-red-700');
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Submit Warranty Request';
-                return;
+                return; // Exit without trying to send
             }
 
             submitBtn.disabled = true;
@@ -454,29 +453,35 @@
             if (!window.emailjs) {
                 console.error("EmailJS not loaded.");
                 setMessage(messageDiv, '❌ Submission failed: EmailJS library not loaded.', 'bg-red-100 text-red-700');
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Submit Warranty Request';
-                return;
+                return; // Exit without trying to send
             }
             
             try {
                 // 1. Send the primary email to the warranty team
                 await window.emailjs.send(SERVICE_ID, PRIMARY_TEMPLATE_ID, emailParams);
                 
-                // 2. Send the confirmation email to the homeowner
-                await window.emailjs.send(SERVICE_ID, CONFIRMATION_TEMPLATE_ID, emailParams);
-
-                setMessage(messageDiv, '✅ Success! Your 30-Day Warranty Request has been submitted, and a confirmation email has been sent to you.', 'bg-green-100 text-green-700');
+                // 2. Send the confirmation email to the homeowner (wrapped in its own error handler)
+                try {
+                    await window.emailjs.send(SERVICE_ID, CONFIRMATION_TEMPLATE_ID, emailParams);
+                    // Both succeeded
+                    setMessage(messageDiv, '✅ Success! Your 30-Day Warranty Request has been submitted, and a confirmation email has been sent to you.', 'bg-green-100 text-green-700');
+                } catch (confError) {
+                    // Primary succeeded, confirmation failed - this is a warning, not a hard failure
+                    console.error('EmailJS Confirmation Error (Primary Sent):', confError);
+                    setMessage(messageDiv, `⚠️ Submitted to Warranty, but **confirmation email failed**. Please tell the homeowner to contact the office.`, 'bg-yellow-100 text-yellow-700');
+                }
                 
-                // Keep success message visible and allow closing the modal
+                // Keep final message visible and set button text
                 submitBtn.textContent = 'Submitted!';
                 
-            } catch (error) {
-                // This catch block ensures the button is re-enabled on any failure
-                console.error('EmailJS Submission Error:', error);
-                setMessage(messageDiv, `❌ Submission failed. Error: ${error.text || JSON.stringify(error) || 'Unknown error'}. Please verify your EmailJS setup.`, 'bg-red-100 text-red-700');
-                submitBtn.disabled = false;
+            } catch (primaryError) {
+                // Primary failed immediately - this is a hard failure
+                console.error('EmailJS Primary Submission Error:', primaryError);
+                setMessage(messageDiv, `❌ Submission failed. Error: ${primaryError.text || JSON.stringify(primaryError) || 'Unknown network error'}. Please verify your EmailJS setup.`, 'bg-red-100 text-red-700');
                 submitBtn.textContent = 'Submit Warranty Request';
+            } finally {
+                // **CRITICAL FIX:** This block ensures the button is re-enabled or kept in the success state.
+                submitBtn.disabled = false;
             }
         };
 
