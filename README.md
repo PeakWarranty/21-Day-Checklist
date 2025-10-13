@@ -106,12 +106,11 @@
 
     <script>
         // --- CONFIGURATION DATA ---
-        // I have pre-filled the Service and Template IDs based on our conversation.
-        // !!! YOU MUST REPLACE 'YOUR_EMAILJS_USER_ID' WITH YOUR ACTUAL KEY !!!
-        const EMAILJS_USER_ID = 'YOUR_EMAILJS_USER_ID'; 
-        const SERVICE_ID = 'service_warranty_submissions'; // Verified template prefix
-        const PRIMARY_TEMPLATE_ID = 'of2vt65'; // Your verified primary template ID
-        const CONFIRMATION_TEMPLATE_ID = '2a7qx72'; // Your verified auto-response template ID
+        // PUBLIC KEY INSERTED HERE
+        const EMAILJS_USER_ID = 'bSgwpRuVeEky48mPe'; 
+        const SERVICE_ID = 'service_warranty_submissions'; 
+        const PRIMARY_TEMPLATE_ID = 'of2vt65'; 
+        const CONFIRMATION_TEMPLATE_ID = '2a7qx72'; 
         const WARRANTY_EMAIL = 'warranty@peakmhc.com';
 
         const CHECKLIST_SECTIONS = [
