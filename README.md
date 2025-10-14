@@ -22,29 +22,6 @@
         <form id="parts-form" class="space-y-4">
             
             <div class="space-y-2">
-                <label for="user-name" class="block text-sm font-medium text-gray-700">Person Submitting Request</label>
-                <select id="user-name" name="user-name" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out">
-                    <option value="" disabled selected>Select a person</option>
-                    <option value="Brandon Hatfield">Brandon Hatfield</option>
-                    <option value="Iesha Coatney">Iesha Coatney</option>
-                    <option value="Jessica Baez">Jessica Baez</option>
-                    <option value="Karen Green">Karen Green</option>
-                    <option value="Leender Othan">Leender Othan</option>
-                    <option value="Nicole Filburn">Nicole Filburn</option>
-                    <option value="Shawn Thomas">Shawn Thomas</option>
-                    <option value="Tom Roberson">Tom Roberson</option>
-                    <option value="Tonya Johnson">Tonya Johnson</option>
-                    <option value="Homeowner">Homeowner (Fill in below)</option>
-                    <option value="Other">Other (Please specify)</option>
-                </select>
-            </div>
-            
-            <div id="other-user-div" class="space-y-2 hidden">
-                <label for="other-user-name" class="block text-sm font-medium text-gray-700">Specify Requester's Name</label>
-                <input type="text" id="other-user-name" name="other-user-name" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out">
-            </div>
-
-            <div class="space-y-2 pt-4 border-t border-gray-200">
                 <h2 class="text-lg font-semibold text-gray-800">Homeowner & Contact Details</h2>
             </div>
 
@@ -71,34 +48,7 @@
             <div class="space-y-2">
                 <label for="serial-number" class="block text-sm font-medium text-gray-700">Serial Number</label>
                 <input type="text" id="serial-number" name="serial-number" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out">
-            </div>
-
-            <div class="space-y-2 pt-4 border-t border-gray-200">
-                <label for="urgency" class="block text-sm font-medium text-gray-700">Urgency</label>
-                <select id="urgency" name="urgency" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out">
-                    <option value="" disabled selected>Select urgency</option>
-                    <option value="Low">Low</option>
-                    <option value="Medium">Medium</option>
-                    <option value="High">High</option>
-                    <option value="Emergency">Emergency</option>
-                </select>
-            </div>
-            
-            <div class="space-y-2">
-                <label for="community-select" class="block text-sm font-medium text-gray-700">Community</label>
-                <select id="community-select" name="community" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out">
-                    <option value="" disabled selected>Select your community</option>
-                    <option value="Rancho Serenidad">Rancho Serenidad</option>
-                    <option value="Villas De Mariposa">Villas De Mariposa</option>
-                    <option value="Brazos Point">Brazos Point</option>
-                    <option value="Solena">Solena</option>
-                    <option value="Other">Other (Please specify)</option>
-                </select>
-            </div>
-            
-            <div id="other-community-div" class="space-y-2 hidden">
-                <label for="other-community" class="block text-sm font-medium text-gray-700">Specify Community</label>
-                <input type="text" id="other-community" name="home-address-unused" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out">
+                <p class="text-xs text-gray-500 italic mt-1">This number can be found on the date sheet under your kitchen sink.</p>
             </div>
 
             <div class="space-y-2">
@@ -119,6 +69,23 @@
                 </select>
             </div>
             
+            <div class="space-y-2 pt-4 border-t border-gray-200">
+                <label for="community-select" class="block text-sm font-medium text-gray-700">Community</label>
+                <select id="community-select" name="community" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out">
+                    <option value="" disabled selected>Select your community</option>
+                    <option value="Rancho Serenidad">Rancho Serenidad</option>
+                    <option value="Villas De Mariposa">Villas De Mariposa</option>
+                    <option value="Brazos Point">Brazos Point</option>
+                    <option value="Solena">Solena</option>
+                    <option value="Other">Other (Please specify)</option>
+                </select>
+            </div>
+            
+            <div id="other-community-div" class="space-y-2 hidden">
+                <label for="other-community" class="block text-sm font-medium text-gray-700">Specify Community</label>
+                <input type="text" id="other-community" name="home-address-unused" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out">
+            </div>
+
             <div id="parts-container" class="space-y-6 mt-6 pt-4 border-t border-gray-200">
             </div>
             
@@ -147,13 +114,13 @@
             const SECONDARY_EMAIL = 'warranty@peakmhc.com'; 
 
             const form = document.getElementById('parts-form');
-            const userNameSelect = document.getElementById('user-name');
-            const otherUserDiv = document.getElementById('other-user-div');
-            const otherUserInput = document.getElementById('other-user-name');
+            // REMOVED: const userNameSelect = document.getElementById('user-name');
+            // REMOVED: const otherUserDiv = document.getElementById('other-user-div');
+            // REMOVED: const otherUserInput = document.getElementById('other-user-name');
             const communitySelect = document.getElementById('community-select');
             const otherCommunityDiv = document.getElementById('other-community-div');
             const otherCommunityInput = document.getElementById('other-community');
-            const urgencySelect = document.getElementById('urgency');
+            // REMOVED: const urgencySelect = document.getElementById('urgency');
             const statusDiv = document.getElementById('status-message');
             const submitBtn = document.getElementById('submit-btn');
             const partsContainer = document.getElementById('parts-container');
@@ -253,10 +220,10 @@
                 otherCommunityInput.name = 'home-address-unused';
                 otherCommunityInput.value = '';
 
-                otherUserDiv.classList.add('hidden');
-                otherUserInput.required = false;
-                otherUserInput.name = 'unused-user';
-                otherUserInput.value = '';
+                // REMOVED: otherUserDiv.classList.add('hidden');
+                // REMOVED: otherUserInput.required = false;
+                // REMOVED: otherUserInput.name = 'unused-user';
+                // REMOVED: otherUserInput.value = '';
                 
                 formMainContent.style.display = 'block';
             }
@@ -265,19 +232,7 @@
 
             addPartBtn.addEventListener('click', addPartEntry);
             
-            // Event listener for the user-name select field
-            userNameSelect.addEventListener('change', (event) => {
-                if (event.target.value === 'Other') {
-                    otherUserDiv.classList.remove('hidden');
-                    otherUserInput.required = true;
-                    otherUserInput.name = 'user-name-other';
-                } else {
-                    otherUserDiv.classList.add('hidden');
-                    otherUserInput.required = false;
-                    otherUserInput.name = 'unused-user';
-                    otherUserInput.value = ''; // Clear the input when switching back
-                }
-            });
+            // REMOVED: userNameSelect.addEventListener('change', ...);
 
             // Event listener for the community select field
             communitySelect.addEventListener('change', (event) => {
@@ -315,24 +270,22 @@
                     partsString += `  Service Description: ${partDescriptions[i].value}\n\n`;
                 }
                 
-                // Determine the final user-name value
-                const finalUserName = userNameSelect.value === 'Other'  
-                    ? otherUserInput.value 
-                    : userNameSelect.value;
-                    
+                // REVISED: finalUserName is no longer needed/used since the field was removed.
+                // REPLACED WITH STATIC VALUE or REMOVED ENTIRELY
+
                 // Determine the final community value
                 const finalCommunity = communitySelect.value === 'Other'  
                     ? otherCommunityInput.value 
                     : communitySelect.value;
 
                 const emailParams = {
-                    'user-name': finalUserName,
-                    // NEW FIELDS ADDED HERE:
+                    // REMOVED: 'user-name': finalUserName,
+                    'user-name': 'Homeowner', // Setting a default static value for the EmailJS template
                     'homeowner-name': homeownerNameInput.value,
                     'contact-phone': contactPhoneInput.value,
                     'contact-email': contactEmailInput.value,
-                    // Existing fields
-                    'urgency': urgencySelect.value,
+                    // REMOVED: 'urgency': urgencySelect.value,
+                    'urgency': 'Medium', // Setting a default static value for the EmailJS template
                     'home-address': finalCommunity,
                     'lot-number': form.elements['lot-number'].value,
                     'serial-number': form.elements['serial-number'].value,
