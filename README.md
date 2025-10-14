@@ -374,7 +374,7 @@
 
                 <h2 class="text-xl font-bold text-gray-800 mt-8 pt-4 border-t border-gray-200">Plumbing, Electrical, & Appliance</h2>
 
-                <div id="item-water-flow" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
+                <div id="item-water-flow-11" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
                     <div class="flex flex-col justify-between items-start space-y-2">
                         <div class="flex-1 w-full space-y-1">
                             <p class="font-semibold text-gray-800" data-item-name="Water Flow/Pressure">Water Flow/Pressure</p>
@@ -385,21 +385,21 @@
                             <div class="text-xs text-gray-500 italic" data-item-check="Test all faucets; check for low pressure or unusual noise">
                                 Check: Test all faucets; check for low pressure or unusual noise
                             </div>
-                            <input type="hidden" name="issue-water-flow" data-item-input data-item-index="11" value=""> 
+                            <input type="hidden" name="issue-water-flow-11" data-item-input data-item-index="11" value=""> 
                         </div>
                         <div class="button-group-alignment">
-                            <button type="button" data-action="ok" data-item="water-flow" class="btn-ok py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">OK</button>
-                            <button type="button" data-action="issue" data-item="water-flow" class="btn-issue py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">Issue</button>
-                            <button type="button" data-action="clear" data-item="water-flow" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
+                            <button type="button" data-action="ok" data-item="water-flow-11" class="btn-ok py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">OK</button>
+                            <button type="button" data-action="issue" data-item="water-flow-11" class="btn-issue py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">Issue</button>
+                            <button type="button" data-action="clear" data-item="water-flow-11" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
                         </div>
                     </div>
                     <div class="comment-area space-y-2 mt-3 hidden">
-                        <label for="comment-water-flow" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
-                        <textarea id="comment-water-flow" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
+                        <label for="comment-water-flow-11" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
+                        <textarea id="comment-water-flow-11" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
                     </div>
                 </div>
 
-                <div id="item-toilets" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
+                <div id="item-toilets-12" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
                     <div class="flex flex-col justify-between items-start space-y-2">
                         <div class="flex-1 w-full space-y-1">
                             <p class="font-semibold text-gray-800" data-item-name="Toilets">Toilets</p>
@@ -410,21 +410,21 @@
                             <div class="text-xs text-gray-500 italic" data-item-check="Flush properly, no running or leaks at the base">
                                 Check: Flush properly, no running or leaks at the base
                             </div>
-                            <input type="hidden" name="issue-toilets" data-item-input data-item-index="12" value=""> 
+                            <input type="hidden" name="issue-toilets-12" data-item-input data-item-index="12" value=""> 
                         </div>
                         <div class="button-group-alignment">
-                            <button type="button" data-action="ok" data-item="toilets" class="btn-ok py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">OK</button>
-                            <button type="button" data-action="issue" data-item="toilets" class="btn-issue py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">Issue</button>
-                            <button type="button" data-action="clear" data-item="toilets" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
+                            <button type="button" data-action="ok" data-item="toilets-12" class="btn-ok py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">OK</button>
+                            <button type="button" data-action="issue" data-item="toilets-12" class="btn-issue py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">Issue</button>
+                            <button type="button" data-action="clear" data-item="toilets-12" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
                         </div>
                     </div>
                     <div class="comment-area space-y-2 mt-3 hidden">
-                        <label for="comment-toilets" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
-                        <textarea id="comment-toilets" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
+                        <label for="comment-toilets-12" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
+                        <textarea id="comment-toilets-12" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
                     </div>
                 </div>
 
-                <div id="item-water-heater" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
+                <div id="item-water-heater-13" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
                     <div class="flex flex-col justify-between items-start space-y-2">
                         <div class="flex-1 w-full space-y-1">
                             <p class="font-semibold text-gray-800" data-item-name="Water Heater">Water Heater</p>
@@ -435,21 +435,21 @@
                             <div class="text-xs text-gray-500 italic" data-item-check="Functioning (providing hot water). Check for leaks near the unit">
                                 Check: Functioning (providing hot water). Check for leaks near the unit
                             </div>
-                            <input type="hidden" name="issue-water-heater" data-item-input data-item-index="13" value=""> 
+                            <input type="hidden" name="issue-water-heater-13" data-item-input data-item-index="13" value=""> 
                         </div>
                         <div class="button-group-alignment">
-                            <button type="button" data-action="ok" data-item="water-heater" class="btn-ok py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">OK</button>
-                            <button type="button" data-action="issue" data-item="water-heater" class="btn-issue py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">Issue</button>
-                            <button type="button" data-action="clear" data-item="water-heater" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
+                            <button type="button" data-action="ok" data-item="water-heater-13" class="btn-ok py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">OK</button>
+                            <button type="button" data-action="issue" data-item="water-heater-13" class="btn-issue py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">Issue</button>
+                            <button type="button" data-action="clear" data-item="water-heater-13" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
                         </div>
                     </div>
                     <div class="comment-area space-y-2 mt-3 hidden">
-                        <label for="comment-water-heater" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
-                        <textarea id="comment-water-heater" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
+                        <label for="comment-water-heater-13" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
+                        <textarea id="comment-water-heater-13" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
                     </div>
                 </div>
 
-                <div id="item-gfci" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
+                <div id="item-gfci-14" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
                     <div class="flex flex-col justify-between items-start space-y-2">
                         <div class="flex-1 w-full space-y-1">
                             <p class="font-semibold text-gray-800" data-item-name="GFCI Outlets">GFCI Outlets</p>
@@ -460,21 +460,21 @@
                             <div class="text-xs text-gray-500 italic" data-item-check="Press TEST button to ensure they trip, then press RESET">
                                 Check: Press TEST button to ensure they trip, then press RESET
                             </div>
-                            <input type="hidden" name="issue-gfci" data-item-input data-item-index="14" value=""> 
+                            <input type="hidden" name="issue-gfci-14" data-item-input data-item-index="14" value=""> 
                         </div>
                         <div class="button-group-alignment">
-                            <button type="button" data-action="ok" data-item="gfci" class="btn-ok py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">OK</button>
-                            <button type="button" data-action="issue" data-item="gfci" class="btn-issue py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">Issue</button>
-                            <button type="button" data-action="clear" data-item="gfci" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
+                            <button type="button" data-action="ok" data-item="gfci-14" class="btn-ok py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">OK</button>
+                            <button type="button" data-action="issue" data-item="gfci-14" class="btn-issue py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">Issue</button>
+                            <button type="button" data-action="clear" data-item="gfci-14" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
                         </div>
                     </div>
                     <div class="comment-area space-y-2 mt-3 hidden">
-                        <label for="comment-gfci" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
-                        <textarea id="comment-gfci" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
+                        <label for="comment-gfci-14" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
+                        <textarea id="comment-gfci-14" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
                     </div>
                 </div>
 
-                <div id="item-switches" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
+                <div id="item-switches-15" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
                     <div class="flex flex-col justify-between items-start space-y-2">
                         <div class="flex-1 w-full space-y-1">
                             <p class="font-semibold text-gray-800" data-item-name="Switches & Outlets">Switches & Outlets</p>
@@ -485,21 +485,21 @@
                             <div class="text-xs text-gray-500 italic" data-item-check="All switches operate their lights/fans; outlets have power">
                                 Check: All switches operate their lights/fans; outlets have power
                             </div>
-                            <input type="hidden" name="issue-switches" data-item-input data-item-index="15" value=""> 
+                            <input type="hidden" name="issue-switches-15" data-item-input data-item-index="15" value=""> 
                         </div>
                         <div class="button-group-alignment">
-                            <button type="button" data-action="ok" data-item="switches" class="btn-ok py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">OK</button>
-                            <button type="button" data-action="issue" data-item="switches" class="btn-issue py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">Issue</button>
-                            <button type="button" data-action="clear" data-item="switches" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
+                            <button type="button" data-action="ok" data-item="switches-15" class="btn-ok py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">OK</button>
+                            <button type="button" data-action="issue" data-item="switches-15" class="btn-issue py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">Issue</button>
+                            <button type="button" data-action="clear" data-item="switches-15" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
                         </div>
                     </div>
                     <div class="comment-area space-y-2 mt-3 hidden">
-                        <label for="comment-switches" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
-                        <textarea id="comment-switches" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
+                        <label for="comment-switches-15" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
+                        <textarea id="comment-switches-15" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
                     </div>
                 </div>
 
-                <div id="item-alarms" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
+                <div id="item-alarms-16" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
                     <div class="flex flex-col justify-between items-start space-y-2">
                         <div class="flex-1 w-full space-y-1">
                             <p class="font-semibold text-gray-800" data-item-name="Smoke/Carbon Monoxide Alarms">Smoke/Carbon Monoxide Alarms</p>
@@ -510,21 +510,21 @@
                             <div class="text-xs text-gray-500 italic" data-item-check="Test all alarms (usually a test button on the unit)">
                                 Check: Test all alarms (usually a test button on the unit)
                             </div>
-                            <input type="hidden" name="issue-alarms" data-item-input data-item-index="16" value=""> 
+                            <input type="hidden" name="issue-alarms-16" data-item-input data-item-index="16" value=""> 
                         </div>
                         <div class="button-group-alignment">
-                            <button type="button" data-action="ok" data-item="alarms" class="btn-ok py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">OK</button>
-                            <button type="button" data-action="issue" data-item="alarms" class="btn-issue py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">Issue</button>
-                            <button type="button" data-action="clear" data-item="alarms" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
+                            <button type="button" data-action="ok" data-item="alarms-16" class="btn-ok py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">OK</button>
+                            <button type="button" data-action="issue" data-item="alarms-16" class="btn-issue py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">Issue</button>
+                            <button type="button" data-action="clear" data-item="alarms-16" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
                         </div>
                     </div>
                     <div class="comment-area space-y-2 mt-3 hidden">
-                        <label for="comment-alarms" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
-                        <textarea id="comment-alarms" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
+                        <label for="comment-alarms-16" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
+                        <textarea id="comment-alarms-16" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
                     </div>
                 </div>
 
-                <div id="item-appliances" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
+                <div id="item-appliances-17" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
                     <div class="flex flex-col justify-between items-start space-y-2">
                         <div class="flex-1 w-full space-y-1">
                             <p class="font-semibold text-gray-800" data-item-name="Appliances">Appliances</p>
@@ -535,194 +535,17 @@
                             <div class="text-xs text-gray-500 italic" data-item-check="Range, Dishwasher, Microwave, Refrigerator are fully operational">
                                 Check: Range, Dishwasher, Microwave, Refrigerator are fully operational
                             </div>
-                            <input type="hidden" name="issue-appliances" data-item-input data-item-index="17" value=""> 
+                            <input type="hidden" name="issue-appliances-17" data-item-input data-item-index="17" value=""> 
                         </div>
                         <div class="button-group-alignment">
-                            <button type="button" data-action="ok" data-item="appliances" class="btn-ok py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">OK</button>
-                            <button type="button" data-action="issue" data-item="appliances" class="btn-issue py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">Issue</button>
-                            <button type="button" data-action="clear" data-item="appliances" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
+                            <button type="button" data-action="ok" data-item="appliances-17" class="btn-ok py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">OK</button>
+                            <button type="button" data-action="issue" data-item="appliances-17" class="btn-issue py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">Issue</button>
+                            <button type="button" data-action="clear" data-item="appliances-17" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
                         </div>
                     </div>
                     <div class="comment-area space-y-2 mt-3 hidden">
-                        <label for="comment-appliances" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
-                        <textarea id="comment-appliances" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
-                    </div>
-                </div>
-
-                <h2 class="text-xl font-bold text-gray-800 mt-8 pt-4 border-t border-gray-200">Plumbing, Electrical, & Appliance</h2>
-
-                <div id="item-water-flow" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
-                    <div class="flex flex-col justify-between items-start space-y-2">
-                        <div class="flex-1 w-full space-y-1">
-                            <p class="font-semibold text-gray-800" data-item-name="Water Flow/Pressure">Water Flow/Pressure</p>
-                            <div class="flex space-x-4 text-sm text-gray-600">
-                                <span class="font-medium">Location:</span>
-                                <span data-item-location="All Sinks/Tubs">All Sinks/Tubs</span>
-                            </div>
-                            <div class="text-xs text-gray-500 italic" data-item-check="Test all faucets; check for low pressure or unusual noise">
-                                Check: Test all faucets; check for low pressure or unusual noise
-                            </div>
-                            <input type="hidden" name="issue-water-flow" data-item-input data-item-index="18" value=""> 
-                        </div>
-                        <div class="button-group-alignment">
-                            <button type="button" data-action="ok" data-item="water-flow" class="btn-ok py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">OK</button>
-                            <button type="button" data-action="issue" data-item="water-flow" class="btn-issue py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">Issue</button>
-                            <button type="button" data-action="clear" data-item="water-flow" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
-                        </div>
-                    </div>
-                    <div class="comment-area space-y-2 mt-3 hidden">
-                        <label for="comment-water-flow" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
-                        <textarea id="comment-water-flow" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
-                    </div>
-                </div>
-
-                <div id="item-toilets" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
-                    <div class="flex flex-col justify-between items-start space-y-2">
-                        <div class="flex-1 w-full space-y-1">
-                            <p class="font-semibold text-gray-800" data-item-name="Toilets">Toilets</p>
-                            <div class="flex space-x-4 text-sm text-gray-600">
-                                <span class="font-medium">Location:</span>
-                                <span data-item-location="All Bathrooms">All Bathrooms</span>
-                            </div>
-                            <div class="text-xs text-gray-500 italic" data-item-check="Flush properly, no running or leaks at the base">
-                                Check: Flush properly, no running or leaks at the base
-                            </div>
-                            <input type="hidden" name="issue-toilets" data-item-input data-item-index="19" value=""> 
-                        </div>
-                        <div class="button-group-alignment">
-                            <button type="button" data-action="ok" data-item="toilets" class="btn-ok py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">OK</button>
-                            <button type="button" data-action="issue" data-item="toilets" class="btn-issue py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">Issue</button>
-                            <button type="button" data-action="clear" data-item="toilets" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
-                        </div>
-                    </div>
-                    <div class="comment-area space-y-2 mt-3 hidden">
-                        <label for="comment-toilets" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
-                        <textarea id="comment-toilets" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
-                    </div>
-                </div>
-
-                <div id="item-water-heater" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
-                    <div class="flex flex-col justify-between items-start space-y-2">
-                        <div class="flex-1 w-full space-y-1">
-                            <p class="font-semibold text-gray-800" data-item-name="Water Heater">Water Heater</p>
-                            <div class="flex space-x-4 text-sm text-gray-600">
-                                <span class="font-medium">Location:</span>
-                                <span data-item-location="Utility Closet">Utility Closet</span>
-                            </div>
-                            <div class="text-xs text-gray-500 italic" data-item-check="Functioning (providing hot water). Check for leaks near the unit">
-                                Check: Functioning (providing hot water). Check for leaks near the unit
-                            </div>
-                            <input type="hidden" name="issue-water-heater" data-item-input data-item-index="20" value=""> 
-                        </div>
-                        <div class="button-group-alignment">
-                            <button type="button" data-action="ok" data-item="water-heater" class="btn-ok py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">OK</button>
-                            <button type="button" data-action="issue" data-item="water-heater" class="btn-issue py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">Issue</button>
-                            <button type="button" data-action="clear" data-item="water-heater" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
-                        </div>
-                    </div>
-                    <div class="comment-area space-y-2 mt-3 hidden">
-                        <label for="comment-water-heater" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
-                        <textarea id="comment-water-heater" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
-                    </div>
-                </div>
-
-                <div id="item-gfci" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
-                    <div class="flex flex-col justify-between items-start space-y-2">
-                        <div class="flex-1 w-full space-y-1">
-                            <p class="font-semibold text-gray-800" data-item-name="GFCI Outlets">GFCI Outlets</p>
-                            <div class="flex space-x-4 text-sm text-gray-600">
-                                <span class="font-medium">Location:</span>
-                                <span data-item-location="Kitchen/Baths/Exterior">Kitchen/Baths/Exterior</span>
-                            </div>
-                            <div class="text-xs text-gray-500 italic" data-item-check="Press TEST button to ensure they trip, then press RESET">
-                                Check: Press TEST button to ensure they trip, then press RESET
-                            </div>
-                            <input type="hidden" name="issue-gfci" data-item-input data-item-index="21" value=""> 
-                        </div>
-                        <div class="button-group-alignment">
-                            <button type="button" data-action="ok" data-item="gfci" class="btn-ok py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">OK</button>
-                            <button type="button" data-action="issue" data-item="gfci" class="btn-issue py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">Issue</button>
-                            <button type="button" data-action="clear" data-item="gfci" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
-                        </div>
-                    </div>
-                    <div class="comment-area space-y-2 mt-3 hidden">
-                        <label for="comment-gfci" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
-                        <textarea id="comment-gfci" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
-                    </div>
-                </div>
-
-                <div id="item-switches" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
-                    <div class="flex flex-col justify-between items-start space-y-2">
-                        <div class="flex-1 w-full space-y-1">
-                            <p class="font-semibold text-gray-800" data-item-name="Switches & Outlets">Switches & Outlets</p>
-                            <div class="flex space-x-4 text-sm text-gray-600">
-                                <span class="font-medium">Location:</span>
-                                <span data-item-location="Throughout">Throughout</span>
-                            </div>
-                            <div class="text-xs text-gray-500 italic" data-item-check="All switches operate their lights/fans; outlets have power">
-                                Check: All switches operate their lights/fans; outlets have power
-                            </div>
-                            <input type="hidden" name="issue-switches" data-item-input data-item-index="22" value=""> 
-                        </div>
-                        <div class="button-group-alignment">
-                            <button type="button" data-action="ok" data-item="switches" class="btn-ok py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">OK</button>
-                            <button type="button" data-action="issue" data-item="switches" class="btn-issue py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">Issue</button>
-                            <button type="button" data-action="clear" data-item="switches" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
-                        </div>
-                    </div>
-                    <div class="comment-area space-y-2 mt-3 hidden">
-                        <label for="comment-switches" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
-                        <textarea id="comment-switches" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
-                    </div>
-                </div>
-
-                <div id="item-alarms" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
-                    <div class="flex flex-col justify-between items-start space-y-2">
-                        <div class="flex-1 w-full space-y-1">
-                            <p class="font-semibold text-gray-800" data-item-name="Smoke/Carbon Monoxide Alarms">Smoke/Carbon Monoxide Alarms</p>
-                            <div class="flex space-x-4 text-sm text-gray-600">
-                                <span class="font-medium">Location:</span>
-                                <span data-item-location="Throughout">Throughout</span>
-                            </div>
-                            <div class="text-xs text-gray-500 italic" data-item-check="Test all alarms (usually a test button on the unit)">
-                                Check: Test all alarms (usually a test button on the unit)
-                            </div>
-                            <input type="hidden" name="issue-alarms" data-item-input data-item-index="23" value=""> 
-                        </div>
-                        <div class="button-group-alignment">
-                            <button type="button" data-action="ok" data-item="alarms" class="btn-ok py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">OK</button>
-                            <button type="button" data-action="issue" data-item="alarms" class="btn-issue py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">Issue</button>
-                            <button type="button" data-action="clear" data-item="alarms" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
-                        </div>
-                    </div>
-                    <div class="comment-area space-y-2 mt-3 hidden">
-                        <label for="comment-alarms" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
-                        <textarea id="comment-alarms" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
-                    </div>
-                </div>
-
-                <div id="item-appliances" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
-                    <div class="flex flex-col justify-between items-start space-y-2">
-                        <div class="flex-1 w-full space-y-1">
-                            <p class="font-semibold text-gray-800" data-item-name="Appliances">Appliances</p>
-                            <div class="flex space-x-4 text-sm text-gray-600">
-                                <span class="font-medium">Location:</span>
-                                <span data-item-location="Kitchen">Kitchen</span>
-                            </div>
-                            <div class="text-xs text-gray-500 italic" data-item-check="Range, Dishwasher, Microwave, Refrigerator are fully operational">
-                                Check: Range, Dishwasher, Microwave, Refrigerator are fully operational
-                            </div>
-                            <input type="hidden" name="issue-appliances" data-item-input data-item-index="24" value=""> 
-                        </div>
-                        <div class="button-group-alignment">
-                            <button type="button" data-action="ok" data-item="appliances" class="btn-ok py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">OK</button>
-                            <button type="button" data-action="issue" data-item="appliances" class="btn-issue py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">Issue</button>
-                            <button type="button" data-action="clear" data-item="appliances" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
-                        </div>
-                    </div>
-                    <div class="comment-area space-y-2 mt-3 hidden">
-                        <label for="comment-appliances" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
-                        <textarea id="comment-appliances" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
+                        <label for="comment-appliances-17" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
+                        <textarea id="comment-appliances-17" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
                     </div>
                 </div>
                 
@@ -739,7 +562,7 @@
                             <div class="text-xs text-gray-500 italic" data-item-check="Missing panels, dents, gaps, or improperly fastened skirting">
                                 Check: Missing panels, dents, gaps, or improperly fastened skirting
                             </div>
-                            <input type="hidden" name="issue-siding" data-item-input data-item-index="25" value=""> 
+                            <input type="hidden" name="issue-siding" data-item-input data-item-index="18" value=""> 
                         </div>
                         <div class="button-group-alignment">
                             <button type="button" data-action="ok" data-item="siding" class="btn-ok py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">OK</button>
@@ -764,7 +587,7 @@
                             <div class="text-xs text-gray-500 italic" data-item-check="Check for loose shingles, damage, or open vents/seals">
                                 Check: Check for loose shingles, damage, or open vents/seals
                             </div>
-                            <input type="hidden" name="issue-roof" data-item-input data-item-index="26" value=""> 
+                            <input type="hidden" name="issue-roof" data-item-input data-item-index="19" value=""> 
                         </div>
                         <div class="button-group-alignment">
                             <button type="button" data-action="ok" data-item="roof" class="btn-ok py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">OK</button>
@@ -789,7 +612,7 @@
                             <div class="text-xs text-gray-500 italic" data-item-check="Run both Heat and Cooling cycles to ensure proper function">
                                 Check: Run both Heat and Cooling cycles to ensure proper function
                             </div>
-                            <input type="hidden" name="issue-hvac" data-item-input data-item-index="27" value=""> 
+                            <input type="hidden" name="issue-hvac" data-item-input data-item-index="20" value=""> 
                         </div>
                         <div class="button-group-alignment">
                             <button type="button" data-action="ok" data-item="hvac" class="btn-ok py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">OK</button>
@@ -814,7 +637,7 @@
                             <div class="text-xs text-gray-500 italic" data-item-check="Vents are securely fastened and air is flowing strongly to all rooms">
                                 Check: Vents are securely fastened and air is flowing strongly to all rooms
                             </div>
-                            <input type="hidden" name="issue-ductwork" data-item-input data-item-index="28" value=""> 
+                            <input type="hidden" name="issue-ductwork" data-item-input data-item-index="21" value=""> 
                         </div>
                         <div class="button-group-alignment">
                             <button type="button" data-action="ok" data-item="ductwork" class="btn-ok py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">OK</button>
@@ -839,7 +662,7 @@
                             <div class="text-xs text-gray-500 italic" data-item-check="Check for noticeable slopes in floors or difficulty closing doors (structural issue)">
                                 Check: Check for noticeable slopes in floors or difficulty closing doors (structural issue)
                             </div>
-                            <input type="hidden" name="issue-leveling" data-item-input data-item-index="29" value=""> 
+                            <input type="hidden" name="issue-leveling" data-item-input data-item-index="22" value=""> 
                         </div>
                         <div class="button-group-alignment">
                             <button type="button" data-action="ok" data-item="leveling" class="btn-ok py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">OK</button>
@@ -864,7 +687,7 @@
                             <div class="text-xs text-gray-500 italic" data-item-check="Visibly check anchors/straps for obvious signs of looseness or damage">
                                 Check: Visibly check anchors/straps for obvious signs of looseness or damage
                             </div>
-                            <input type="hidden" name="issue-tie-downs" data-item-input data-item-index="30" value=""> 
+                            <input type="hidden" name="issue-tie-downs" data-item-input data-item-index="23" value=""> 
                         </div>
                         <div class="button-group-alignment">
                             <button type="button" data-action="ok" data-item="tie-downs" class="btn-ok py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">OK</button>
@@ -894,7 +717,9 @@
             // !!! IMPORTANT: REPLACE THESE WITH YOUR ACTUAL EmailJS CREDENTIALS !!!
             const USER_ID = 'bSgwpRuVeEky48mPe';  
             const SERVICE_ID = 'service_7lbsq24';
-            const TEMPLATE_ID = 'template_dvr6oem';
+            const TEMPLATE_ID_STAFF = 'template_dvr6oem'; 
+            // UPDATED TEMPLATE ID FOR CONFIRMATION
+            const TEMPLATE_ID_CONFIRMATION = 'template_of2vt65'; 
             const SECONDARY_EMAIL = 'warranty@peakmhc.com'; 
 
             const form = document.getElementById('parts-form');
@@ -1048,7 +873,9 @@
                     ? otherCommunityInput.value 
                     : communitySelect.value;
 
+                // --- 1. PARAMETERS FOR BOTH EMAILS ---
                 const emailParams = {
+                    'to_email': contactEmailInput.value, // Used to direct confirmation email
                     'user-name': 'Homeowner', 
                     'homeowner-name': homeownerNameInput.value,
                     'contact-phone': contactPhoneInput.value,
@@ -1062,12 +889,19 @@
                     'secondary_email': SECONDARY_EMAIL
                 };
                 
-                // EMAILJS PATH REMAINS INTACT
-                emailjs.send(SERVICE_ID, TEMPLATE_ID, emailParams)
+                // --- 2. SEND PRIMARY EMAIL (to staff/peakmhc.com) ---
+                const primarySend = emailjs.send(SERVICE_ID, TEMPLATE_ID_STAFF, emailParams);
+                
+                // --- 3. SEND CONFIRMATION EMAIL (to homeowner) ---
+                const confirmationSend = emailjs.send(SERVICE_ID, TEMPLATE_ID_CONFIRMATION, emailParams);
+
+
+                // --- 4. HANDLE BOTH PROMISES ---
+                Promise.all([primarySend, confirmationSend])
                     .then(function() {
                         statusDiv.classList.remove('bg-blue-100', 'text-blue-800');
                         statusDiv.classList.add('bg-green-100', 'text-green-800');
-                        statusDiv.innerHTML = '<strong>Success!</strong> Your request has been sent. <br><br> <button id="continue-btn" class="py-2 px-4 mt-2 bg-blue-600 hover:bg-blue-700 rounded-full text-white font-bold transition duration-150 ease-in-out">Submit Another Request</button>';
+                        statusDiv.innerHTML = '<strong>Success!</strong> Your request has been sent. A confirmation email has been sent to your address. <br><br> <button id="continue-btn" class="py-2 px-4 mt-2 bg-blue-600 hover:bg-blue-700 rounded-full text-white font-bold transition duration-150 ease-in-out">Submit Another Request</button>';
                         
                         formMainContent.style.display = 'none'; 
                         document.getElementById('continue-btn').addEventListener('click', resetForm);
