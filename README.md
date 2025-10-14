@@ -99,11 +99,10 @@
 
     <script>
         // --- CONFIGURATION DATA ---
-        // 🚨 IMPORTANT: This URL MUST BE THE "formResponse" URL obtained from your Google Form's source code.
+        // 🚨 IMPORTANT: This URL is the Form Response URL for reliable Google Form submission.
         const GOOGLE_FORM_ACTION_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSf3gsCzV8c7RfnWdSrLb3-0YoHLxay0GNCbxaF3Rwit8yY8mg/formResponse';
 
         // 🚨 CRITICAL: These are the ENTRY IDs for the 8 fields in your Google Form (in order).
-        // This mapping ensures data goes to the correct spreadsheet column.
         const FIELD_ENTRY_MAP = {
             homeownerName: 'entry.1740954541',
             community: 'entry.159491752',
@@ -165,8 +164,6 @@
 
         /**
          * Generates a unique ID for a checklist item.
-         * @param {string} item - The name of the checklist item.
-         * @param {string} location - The location of the checklist item.
          */
         const generateId = (item, location) => 
             `${item.replace(/\s/g, '_')}_${location.replace(/\s/g, '_')}`.toLowerCase();
@@ -470,27 +467,30 @@
 
             try {
                 // 3. Submit data to the Google Form Action URL
+                // We are relying on the 'no-cors' mode which prevents reading the actual response status, 
+                // but is required for cross-origin Google Form submission.
                 const response = await fetch(GOOGLE_FORM_ACTION_URL, {
                     method: 'POST',
-                    mode: 'no-cors', // Required for Google Forms submission to prevent CORS errors
+                    mode: 'no-cors', 
                     body: formBody,
                 });
 
-                // Google Forms returns a 302 redirect with mode: 'no-cors', which is successful.
-                // We rely on the fetch resolving without a network error.
+                // If fetch resolves (no network error), we assume success in 'no-cors' mode.
                 if (response.status === 0 || response.type === 'opaque') {
                     setMessage(messageDiv, '✅ Success! Your 30-Day Warranty Request has been submitted. Check your spreadsheet.', 'bg-green-100 text-green-700');
                     submitBtn.textContent = 'Submitted!';
                 } else {
-                    // Handle unexpected response status codes if mode was 'cors'
+                    // This block is unlikely to run in 'no-cors' mode but included for robustness
                     throw new Error(`Submission failed with HTTP status: ${response.status}`);
                 }
                 
             } catch (error) {
                 console.error('Submission Error:', error);
-                setMessage(messageDiv, `❌ Submission failed. Network or Form Action Error.`, 'bg-red-100 text-red-700');
+                // A network error often means a server blocked the request, which is usually due to an incorrect URL format.
+                setMessage(messageDiv, `❌ Submission failed. Check your browser console for network errors.`, 'bg-red-100 text-red-700');
                 submitBtn.textContent = 'Submit Warranty Request';
             } finally {
+                // CRITICAL: This guarantees the button is released.
                 submitBtn.disabled = false;
             }
         };
@@ -518,3 +518,11 @@
     </script>
 </body>
 </html>
+```
+
+## 🎯 Final Troubleshooting Step
+
+Since the app is *still* stuck in "Sending..." even with the most reliable submission method, this means the single line responsible for the network connection is failing:
+
+```javascript
+const response = await fetch(GOOGLE_FORM_ACTION_URL, { ... });
