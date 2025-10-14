@@ -466,12 +466,11 @@
             // 3. Construct the full submission URL (using GET/FormResponse)
             const submissionUrl = `${GOOGLE_FORM_ACTION_URL}?${params.toString()}`;
             
-            // 4. Submit by redirecting the user's browser (most reliable method)
-            // Note: This leaves the app's success state to be handled by the Google Form's success page.
+            // 4. Close the modal and redirect the user's browser (most reliable method)
+            document.getElementById('review-modal').classList.add('hidden');
             window.location.href = submissionUrl;
 
             // Since the page redirects, the following code is primarily for internal handling if the redirect fails.
-            // We set a brief success message locally before redirecting.
             setMessage(messageDiv, '✅ Redirecting to Google Form...', 'bg-green-100 text-green-700');
         };
         
