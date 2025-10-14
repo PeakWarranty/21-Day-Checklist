@@ -20,8 +20,9 @@
         </p>
         
         <form id="parts-form" class="space-y-4">
+            
             <div class="space-y-2">
-                <label for="user-name" class="block text-sm font-medium text-gray-700">Person Requesting Service</label>
+                <label for="user-name" class="block text-sm font-medium text-gray-700">Person Submitting Request</label>
                 <select id="user-name" name="user-name" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out">
                     <option value="" disabled selected>Select a person</option>
                     <option value="Brandon Hatfield">Brandon Hatfield</option>
@@ -33,6 +34,7 @@
                     <option value="Shawn Thomas">Shawn Thomas</option>
                     <option value="Tom Roberson">Tom Roberson</option>
                     <option value="Tonya Johnson">Tonya Johnson</option>
+                    <option value="Homeowner">Homeowner (Fill in below)</option>
                     <option value="Other">Other (Please specify)</option>
                 </select>
             </div>
@@ -42,7 +44,36 @@
                 <input type="text" id="other-user-name" name="other-user-name" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out">
             </div>
 
+            <div class="space-y-2 pt-4 border-t border-gray-200">
+                <h2 class="text-lg font-semibold text-gray-800">Homeowner & Contact Details</h2>
+            </div>
+
             <div class="space-y-2">
+                <label for="homeowner-name" class="block text-sm font-medium text-gray-700">Homeowner's Name</label>
+                <input type="text" id="homeowner-name" name="homeowner-name" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out">
+            </div>
+
+            <div class="space-y-2">
+                <label for="contact-phone" class="block text-sm font-medium text-gray-700">Contact Phone Number</label>
+                <input type="tel" id="contact-phone" name="contact-phone" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out">
+            </div>
+
+            <div class="space-y-2">
+                <label for="contact-email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                <input type="email" id="contact-email" name="contact-email" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out">
+            </div>
+            
+            <div class="space-y-2">
+                <label for="lot-number" class="block text-sm font-medium text-gray-700">Lot Number</label>
+                <input type="text" id="lot-number" name="lot-number" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out">
+            </div>
+            
+            <div class="space-y-2">
+                <label for="serial-number" class="block text-sm font-medium text-gray-700">Serial Number</label>
+                <input type="text" id="serial-number" name="serial-number" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out">
+            </div>
+
+            <div class="space-y-2 pt-4 border-t border-gray-200">
                 <label for="urgency" class="block text-sm font-medium text-gray-700">Urgency</label>
                 <select id="urgency" name="urgency" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out">
                     <option value="" disabled selected>Select urgency</option>
@@ -71,15 +102,6 @@
             </div>
 
             <div class="space-y-2">
-                <label for="lot-number" class="block text-sm font-medium text-gray-700">Lot Number</label>
-                <input type="text" id="lot-number" name="lot-number" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out">
-            </div>
-            <div class="space-y-2">
-                <label for="serial-number" class="block text-sm font-medium text-gray-700">Serial Number</label>
-                <input type="text" id="serial-number" name="serial-number" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out">
-            </div>
-            
-            <div class="space-y-2">
                 <label for="home-manufacturer" class="block text-sm font-medium text-gray-700">Home Manufacturer</label>
                 <select id="home-manufacturer" name="home-manufacturer" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out">
                     <option value="" disabled selected>Select a manufacturer</option>
@@ -97,7 +119,7 @@
                 </select>
             </div>
             
-            <div id="parts-container" class="space-y-6 mt-6">
+            <div id="parts-container" class="space-y-6 mt-6 pt-4 border-t border-gray-200">
             </div>
             
             <div class="flex space-x-4">
@@ -137,8 +159,13 @@
             const partsContainer = document.getElementById('parts-container');
             const addPartBtn = document.getElementById('add-part-btn');
             const formMainContent = document.querySelector('form');
+            
+            // New field references
+            const homeownerNameInput = document.getElementById('homeowner-name');
+            const contactPhoneInput = document.getElementById('contact-phone');
+            const contactEmailInput = document.getElementById('contact-email');
 
-            let itemCounter = 0; // Renamed from partCounter to itemCounter for clarity
+            let itemCounter = 0; 
 
             const partLocations = [
                 "Exterior", 
@@ -159,21 +186,18 @@
             
             function updatePartEntryHeadings() {
                 const services = partsContainer.querySelectorAll('.part-entry');
-                itemCounter = services.length; // Sync the counter
+                itemCounter = services.length; 
 
                 services.forEach((service, index) => {
                     const heading = service.querySelector('h3 span');
-                    // Renamed "Service Requested" to "Warranty Item"
                     heading.textContent = index === 0 ? 'Warranty Item' : `Warranty Item #${index + 1}`; 
                     
-                    // Update field names and IDs to match the new number
                     const newIndex = index + 1; 
                     service.querySelector('textarea').id = `part-description-${newIndex}`;
                     service.querySelector('textarea').name = `part-description-${newIndex}`;
                     service.querySelector('select').id = `part-location-${newIndex}`;
                     service.querySelector('select').name = `part-location-${newIndex}`;
 
-                    // Show remove button for all parts after the first one
                     let removeBtn = service.querySelector('.remove-part-btn');
                     if (index > 0 && !removeBtn) {
                          const removeBtnHTML = '<button type="button" class="remove-part-btn text-red-500 hover:text-red-700 text-sm font-normal transition duration-150 ease-in-out">Remove</button>';
@@ -190,12 +214,10 @@
             }
 
             function addPartEntry() {
-                // Use itemCounter for naming/ID purposes
                 itemCounter++; 
                 const partDiv = document.createElement('div');
                 partDiv.classList.add('part-entry', 'bg-gray-50', 'p-4', 'rounded-lg', 'border', 'border-gray-200', 'space-y-2');
                 
-                // Renamed "Service Requested" to "Warranty Item"
                 partDiv.innerHTML = `
                     <h3 class="font-semibold text-gray-700 flex justify-between items-center">
                         <span>${itemCounter === 1 ? 'Warranty Item' : `Warranty Item #${itemCounter}`}</span>
@@ -214,14 +236,13 @@
                 `;
                 partsContainer.appendChild(partDiv);
                 
-                // Add remove button logic managed by updatePartEntryHeadings
                 updatePartEntryHeadings(); 
             }
 
             function resetForm() {
                 form.reset();
                 partsContainer.innerHTML = '';
-                itemCounter = 0; // Reset item counter
+                itemCounter = 0; 
                 addPartEntry();
                 statusDiv.classList.add('hidden');
                 statusDiv.innerHTML = '';
@@ -289,7 +310,6 @@
                 const partLocations = partsContainer.querySelectorAll('[name^="part-location-"]');
                 let partsString = '';
                 for (let i = 0; i < partDescriptions.length; i++) {
-                    // Changed output label to reflect "Warranty Item"
                     partsString += `Warranty Item #${i + 1}:\n`; 
                     partsString += `  Location of Issue: ${partLocations[i].value}\n`;
                     partsString += `  Service Description: ${partDescriptions[i].value}\n\n`;
@@ -307,12 +327,17 @@
 
                 const emailParams = {
                     'user-name': finalUserName,
+                    // NEW FIELDS ADDED HERE:
+                    'homeowner-name': homeownerNameInput.value,
+                    'contact-phone': contactPhoneInput.value,
+                    'contact-email': contactEmailInput.value,
+                    // Existing fields
                     'urgency': urgencySelect.value,
                     'home-address': finalCommunity,
                     'lot-number': form.elements['lot-number'].value,
                     'serial-number': form.elements['serial-number'].value,
                     'home-manufacturer': form.elements['home-manufacturer'].value,
-                    'part-description': partsString, // The compiled list of services
+                    'part-description': partsString, 
                     'secondary_email': SECONDARY_EMAIL
                 };
                 
