@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>30-Day Manufactured Home Warranty Checklist</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -18,8 +17,6 @@
 </head>
 <body class="bg-gray-100 p-4 sm:p-8">
     <div class="max-w-4xl mx-auto">
-        <!-- The configuration warning div has been removed -->
-
         <header class="text-center mb-8">
             <h1 class="text-4xl font-extrabold text-gray-900">
                 30-Day Move-In Warranty Checklist
@@ -102,13 +99,21 @@
 
     <script>
         // --- CONFIGURATION DATA ---
-        // Public Key (User ID) is correct: bSgwpRuVeEky48mPe
-        const EMAILJS_USER_ID = 'bSgwpRuVeEky48mPe'; 
-        // 🚀 FINAL FIX: Service ID updated to the new, authorized key: service_duw9hhb
-        const SERVICE_ID = 'service_duw9hhb'; 
-        const PRIMARY_TEMPLATE_ID = 'of2vt65'; 
-        const CONFIRMATION_TEMPLATE_ID = '2a7qx72'; 
-        const WARRANTY_EMAIL = 'warranty@peakmhc.com';
+        // 🚨 IMPORTANT: This URL MUST BE THE "formResponse" URL obtained from your Google Form's source code.
+        const GOOGLE_FORM_ACTION_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSf3gsCzV8c7RfnWdSrLb3-0YoHLxay0GNCbxaF3Rwit8yY8mg/formResponse';
+
+        // 🚨 CRITICAL: These are the ENTRY IDs for the 8 fields in your Google Form (in order).
+        // This mapping ensures data goes to the correct spreadsheet column.
+        const FIELD_ENTRY_MAP = {
+            homeownerName: 'entry.1740954541',
+            community: 'entry.159491752',
+            lotNumber: 'entry.1691238930',
+            serialNumber: 'entry.1018512133',
+            contactPhone: 'entry.1345914614',
+            email: 'entry.999665671',
+            submissionDate: 'entry.1082539054',
+            reportedIssues: 'entry.1687051280'
+        };
 
         const CHECKLIST_SECTIONS = [
             // [Section 1]
@@ -160,11 +165,9 @@
 
         /**
          * Generates a unique ID for a checklist item.
-         * @param {string} item - Item name.
-         * @param {string} location - Item location.
          */
         const generateId = (item, location) => 
-            `${item.replace(/\s/g, '_')}_${location.replace(/\s/g, '_')}`.toLowerCase();
+            `${item.item.replace(/\s/g, '_')}_${location.replace(/\s/g, '_')}`.toLowerCase();
 
         /**
          * Initializes the checklist state object.
@@ -177,7 +180,8 @@
                         status: 'UNCHECKED', // OK, ISSUE, UNCHECKED
                         notes: '',
                         item: item.item,
-                        location: item.location
+                        location: item.location,
+                        description: item.description // Keep original description for reference
                     };
                 });
             });
@@ -328,7 +332,7 @@
         
         /**
          * Compiles all submission data and the formatted report.
-         * @returns {object} Contains form data, issues list, and email parameters.
+         * @returns {object} Contains form data, issues list, and report text.
          */
         const compileSubmissionData = () => {
             const form = document.getElementById('warranty-form');
@@ -357,30 +361,28 @@
 
             const issuesReport = issuesList.map((item, index) => {
                 const locationDetail = item.location ? ` (Location: ${item.location})` : '';
-                // Use markdown formatting in the report string for better readability in email
-                return `**${index + 1}. ${item.item}${locationDetail}**\nDescription: ${item.notes}`;
-            }).join('\n\n');
+                // Use markdown formatting in the report string for better readability in the submission form
+                return `${index + 1}. ${item.item}${locationDetail}\nDescription: ${item.notes}\n---`;
+            }).join('\n');
 
-            const finalReportText = issuesReport || 'No actionable issues with description were reported on the 30-Day Checklist.';
-            
-            // --- Final Variables for EmailJS Templates ---
+            const finalReportText = `*** Homeowner Information ***\n` +
+                                   `Name: ${formData.homeownerName}\n` +
+                                   `Community: ${finalCommunity}\n` +
+                                   `Lot #: ${formData.lotNumber}\n` +
+                                   `Serial #: ${formData.serialNumber}\n` +
+                                   `Phone: ${formData.contactPhone}\n` +
+                                   `Email: ${formData.email}\n` +
+                                   `Date: ${submissionDate}\n\n` +
+                                   `*** Reported Issues (${issuesList.length} Total) ***\n` +
+                                   (issuesReport || 'No actionable issues with description were reported.');
+
             return {
                 formData,
                 issuesList,
                 emptyNotesCount,
-                emailParams: {
-                    homeownerName: formData.homeownerName,
-                    community: finalCommunity,
-                    lotNumber: formData.lotNumber,
-                    serialNumber: formData.serialNumber,
-                    contactPhone: formData.contactPhone,
-                    email: formData.email,
-                    // Variables adjusted to match user's final template casing:
-                    SubmissionDate: submissionDate, // Matches {{SubmissionDate}} in user's templates
-                    toEmail: WARRANTY_EMAIL, 
-                    totalissues: issuesList.length, // Matches {{totalissues}} in user's templates
-                    issuesReport: finalReportText,
-                }
+                submissionDate,
+                finalCommunity,
+                finalReportText
             };
         };
 
@@ -388,7 +390,7 @@
          * Displays the review modal and sets up the report.
          */
         const openReviewModal = () => {
-            const { formData, issuesList, emptyNotesCount, emailParams } = compileSubmissionData();
+            const { formData, issuesList, emptyNotesCount, finalReportText, submissionDate } = compileSubmissionData();
             const modal = document.getElementById('review-modal');
             const messageDiv = document.getElementById('submission-message');
             const submitBtn = document.getElementById('submit-button');
@@ -401,31 +403,27 @@
                 setMessage(messageDiv, `❌ Error: ${infoError}`, 'bg-red-100 text-red-700');
                 submitBtn.disabled = true;
                 modal.classList.remove('hidden');
-                // Ensure report preview is empty
                 document.getElementById('report-preview').value = "";
                 return;
             }
 
             // 2. Validate Checklist Notes
             if (issuesList.length === 0 && emptyNotesCount === 0) {
-                // No issues reported. Allow submission, but prompt user.
                 issueSummary.innerHTML = 'All checklist items are marked OK or UNCHECKED. Report will show no issues.';
                 submitBtn.disabled = false; 
             } else if (emptyNotesCount > 0) {
-                // Issues marked without notes. Block submission.
                 setMessage(messageDiv, `⚠️ Submission blocked: ${emptyNotesCount} issue(s) marked but missing descriptions. Please return to the checklist and add notes.`, 'bg-red-100 text-red-700');
                 submitBtn.disabled = true;
                 modal.classList.remove('hidden');
                 return;
             } else {
-                // Valid issues with notes. Ready to submit.
                 issueSummary.innerHTML = `You have identified **${issuesList.length} actionable issues** with detailed descriptions.`;
                 submitBtn.disabled = false;
             }
             
             // Set date and report preview
-            document.getElementById('submission-date').textContent = `Date of Submission: ${emailParams.SubmissionDate}`;
-            document.getElementById('report-preview').value = emailParams.issuesReport;
+            document.getElementById('submission-date').textContent = `Date of Submission: ${submissionDate}`;
+            document.getElementById('report-preview').value = finalReportText;
             
             messageDiv.classList.add('hidden'); // Clear previous messages
             submitBtn.textContent = `Submit Warranty Request (${issuesList.length} Issues)`;
@@ -443,70 +441,62 @@
         };
 
         /**
-         * Sends the email via EmailJS.
+         * Handles the final submission of data to the Google Form URL.
          */
         const handleSubmission = async () => {
-            const { emailParams } = compileSubmissionData();
+            const { formData, issuesList, finalReportText, submissionDate, finalCommunity } = compileSubmissionData();
             const messageDiv = document.getElementById('submission-message');
             const submitBtn = document.getElementById('submit-button');
             
+            // 1. Prepare Data for Google Form
+            const formBody = new FormData();
+            
+            // Map form data to Google Form Entry IDs
+            formBody.append(FIELD_ENTRY_MAP.homeownerName, formData.homeownerName);
+            formBody.append(FIELD_ENTRY_MAP.community, finalCommunity);
+            formBody.append(FIELD_ENTRY_MAP.lotNumber, formData.lotNumber);
+            formBody.append(FIELD_ENTRY_MAP.serialNumber, formData.serialNumber);
+            formBody.append(FIELD_ENTRY_MAP.contactPhone, formData.contactPhone);
+            formBody.append(FIELD_ENTRY_MAP.email, formData.email);
+            formBody.append(FIELD_ENTRY_MAP.submissionDate, submissionDate);
+            formBody.append(FIELD_ENTRY_MAP.reportedIssues, finalReportText);
+            
+            // 2. Set UI to Sending
             submitBtn.disabled = true;
             submitBtn.textContent = 'Sending...';
             setMessage(messageDiv, '⏳ Sending request...', 'bg-blue-100 text-blue-700');
 
-            if (!window.emailjs) {
-                console.error("EmailJS not loaded.");
-                setMessage(messageDiv, '❌ Submission failed: EmailJS library not loaded.', 'bg-red-100 text-red-700');
-                return; 
-            }
-            
             try {
-                // 1. Send the primary email to the warranty team
-                await window.emailjs.send(SERVICE_ID, PRIMARY_TEMPLATE_ID, emailParams);
-                
-                // 2. Send the confirmation email to the homeowner (wrapped in its own error handler)
-                try {
-                    await window.emailjs.send(SERVICE_ID, CONFIRMATION_TEMPLATE_ID, emailParams);
-                    // Both succeeded
-                    setMessage(messageDiv, '✅ Success! Your 30-Day Warranty Request has been submitted, and a confirmation email has been sent to you.', 'bg-green-100 text-green-700');
-                } catch (confError) {
-                    // Primary succeeded, confirmation failed - this is a warning, not a hard failure
-                    console.error('EmailJS Confirmation Error (Primary Sent):', confError);
-                    setMessage(messageDiv, `⚠️ Submitted to Warranty, but **confirmation email failed**. Please tell the homeowner to contact the office.`, 'bg-yellow-100 text-yellow-700');
-                }
-                
-                // Keep final message visible and set button text
-                submitBtn.textContent = 'Submitted!';
-                
-            } catch (primaryError) {
-                // Primary failed immediately - this is a hard failure
-                console.error('EmailJS Primary Submission Error:', primaryError);
-                
-                let errorText = primaryError.text || JSON.stringify(primaryError) || 'Unknown Network Error';
-                if (errorText.includes('parameter') || errorText.includes('empty value')) {
-                    errorText = 'Template configuration error: A variable is likely misspelled or missing in one of your EmailJS templates.';
-                }
+                // 3. Submit data to the Google Form Action URL
+                const response = await fetch(GOOGLE_FORM_ACTION_URL, {
+                    method: 'POST',
+                    mode: 'no-cors', // Required for Google Forms submission to prevent CORS errors
+                    body: formBody,
+                });
 
-                setMessage(messageDiv, `❌ Submission failed. Error: ${errorText}`, 'bg-red-100 text-red-700');
+                // Google Forms returns a 302 redirect with mode: 'no-cors', which is successful.
+                // We rely on the fetch resolving without a network error.
+                if (response.status === 0 || response.type === 'opaque') {
+                    setMessage(messageDiv, '✅ Success! Your 30-Day Warranty Request has been submitted. Check your spreadsheet.', 'bg-green-100 text-green-700');
+                    submitBtn.textContent = 'Submitted!';
+                } else {
+                    // Handle unexpected response status codes if mode was 'cors'
+                    throw new Error(`Submission failed with HTTP status: ${response.status}`);
+                }
+                
+            } catch (error) {
+                console.error('Submission Error:', error);
+                setMessage(messageDiv, `❌ Submission failed. Network or Form Action Error.`, 'bg-red-100 text-red-700');
                 submitBtn.textContent = 'Submit Warranty Request';
             } finally {
-                // **CRITICAL FIX:** This block guarantees the button is released.
                 submitBtn.disabled = false;
             }
         };
         
         /**
-         * Initializes EmailJS and performs initial setup.
+         * Initializes the app on window load.
          */
         const initApp = () => {
-             // Initialize EmailJS
-             if (window.emailjs && EMAILJS_USER_ID) {
-                 window.emailjs.init(EMAILJS_USER_ID);
-             } else if (!EMAILJS_USER_ID) {
-                 console.error("CRITICAL: EMAILJS_USER_ID is missing.");
-             }
-
-             // Setup
              initializeChecklistState();
              renderChecklist();
              
