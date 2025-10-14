@@ -165,9 +165,11 @@
 
         /**
          * Generates a unique ID for a checklist item.
+         * @param {string} item - The name of the checklist item.
+         * @param {string} location - The location of the checklist item.
          */
         const generateId = (item, location) => 
-            `${item.item.replace(/\s/g, '_')}_${location.replace(/\s/g, '_')}`.toLowerCase();
+            `${item.replace(/\s/g, '_')}_${location.replace(/\s/g, '_')}`.toLowerCase();
 
         /**
          * Initializes the checklist state object.
