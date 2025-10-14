@@ -13,6 +13,10 @@
         /* Styles for the checklist buttons and status */
         .status-ok { background-color: #d1fae5; color: #065f46; border-color: #10b981; }
         .status-issue { background-color: #fee2e2; color: #991b1b; border-color: #f87171; }
+        
+        /* New button colors for unselected state */
+        .btn-ok-active { background-color: #10b981 !important; color: white !important; }
+        .btn-issue-active { background-color: #ef4444 !important; color: white !important; }
     </style>
 </head>
 <body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
@@ -89,12 +93,13 @@
                 <input type="text" id="other-community" name="home-address-unused" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out">
             </div>
 
-            <div class="space-y-4 mt-6 pt-4 border-t border-gray-200">
+            <div id="checklist-container" class="space-y-4 mt-6 pt-4 border-t border-gray-200">
                 <h2 class="text-xl font-bold text-gray-800">30-Day Warranty Checklist Items</h2>
 
                 <div id="item-batten-strips" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
-                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-2 md:space-y-0">
-                        <div class="flex-1 space-y-1">
+                    <div class="flex flex-col justify-between items-start space-y-2">
+                        
+                        <div class="flex-1 w-full space-y-1">
                             <p class="font-semibold text-gray-800" data-item-name="Batten Strips/Trim">Batten Strips/Trim</p>
                             <div class="flex space-x-4 text-sm text-gray-600">
                                 <span class="font-medium">Location:</span>
@@ -103,20 +108,24 @@
                             <div class="text-xs text-gray-500 italic" data-item-check="Loose, missing, misaligned batten strips/trim">
                                 Check: Loose, missing, misaligned batten strips/trim
                             </div>
-                            <input type="hidden" name="issue-batten-strips" data-item-input value=""> 
+                            <input type="hidden" name="issue-batten-strips" data-item-input data-item-index="1" value=""> 
                         </div>
 
-                        <div class="flex space-x-2 flex-shrink-0">
-                            <button type="button" data-action="ok" class="w-20 py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-green-100 transition duration-150 ease-in-out">
+                        <div class="flex space-x-2 flex-shrink-0 w-full justify-end">
+                            <button type="button" data-action="ok" data-item="batten-strips" class="btn-ok w-20 py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">
                                 OK
                             </button>
-                            <button type="button" data-action="issue" class="w-32 py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-red-100 transition duration-150 ease-in-out">
-                                Mark as Issue
+                            <button type="button" data-action="issue" data-item="batten-strips" class="btn-issue w-20 py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">
+                                Issue
                             </button>
-                            <button type="button" data-action="clear" class="w-16 py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">
+                            <button type="button" data-action="clear" data-item="batten-strips" class="w-16 py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">
                                 Clear
                             </button>
                         </div>
+                    </div>
+                    <div class="comment-area space-y-2 mt-3 hidden">
+                        <label for="comment-batten-strips" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
+                        <textarea id="comment-batten-strips" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
                     </div>
                 </div>
                 </div>
@@ -152,6 +161,7 @@
             const contactPhoneInput = document.getElementById('contact-phone');
             const contactEmailInput = document.getElementById('contact-email');
 
+
             // --- CHECKLIST LOGIC ---
             checklistContainer.addEventListener('click', function(event) {
                 const button = event.target.closest('button');
@@ -159,25 +169,42 @@
 
                 const itemDiv = button.closest('.warranty-item');
                 const action = button.dataset.action;
+                const itemId = button.dataset.item;
                 const issueInput = itemDiv.querySelector('[data-item-input]');
+                const commentArea = itemDiv.querySelector('.comment-area');
+                const commentInput = commentArea.querySelector('textarea');
                 
-                // Clear existing status classes
+                // Remove all active classes from all buttons in this item
+                itemDiv.querySelectorAll('button[data-action]').forEach(btn => {
+                    btn.classList.remove('btn-ok-active', 'btn-issue-active');
+                });
+                // Remove visual status classes
                 itemDiv.classList.remove('status-ok', 'status-issue');
 
+
                 if (action === 'ok') {
+                    button.classList.add('btn-ok-active');
                     itemDiv.classList.add('status-ok');
-                    issueInput.value = 'OK - No Issue Found.'; // Set value to be ignored later
+                    issueInput.value = 'OK'; 
+                    commentArea.classList.add('hidden');
+                    commentInput.value = ''; // Clear comment if OK
                 } else if (action === 'issue') {
+                    button.classList.add('btn-issue-active');
                     itemDiv.classList.add('status-issue');
                     
-                    // Compile the description for the email
+                    // Set the primary issue value
                     const itemName = itemDiv.querySelector('[data-item-name]').textContent.trim();
                     const itemLocation = itemDiv.querySelector('[data-item-location]').textContent.trim();
                     const itemCheck = itemDiv.querySelector('[data-item-check]').textContent.replace('Check: ', '').trim();
 
                     issueInput.value = `ISSUE: ${itemName} (Location: ${itemLocation}). Check: ${itemCheck}`;
+                    
+                    commentArea.classList.remove('hidden'); // Show comment box
+
                 } else if (action === 'clear') {
-                    issueInput.value = ''; // Clear the hidden input
+                    issueInput.value = ''; 
+                    commentInput.value = '';
+                    commentArea.classList.add('hidden'); // Hide comment box
                 }
             });
             // --- END CHECKLIST LOGIC ---
@@ -197,6 +224,11 @@
                 document.querySelectorAll('.warranty-item').forEach(item => {
                     item.classList.remove('status-ok', 'status-issue');
                     item.querySelector('[data-item-input]').value = '';
+                    item.querySelector('.comment-area').classList.add('hidden');
+                    item.querySelector('.comment-area textarea').value = '';
+                    item.querySelectorAll('button[data-action]').forEach(btn => {
+                        btn.classList.remove('btn-ok-active', 'btn-issue-active');
+                    });
                 });
                 
                 formMainContent.style.display = 'block';
@@ -223,17 +255,31 @@
                 
                 // --- NEW: COMPILE CHECKLIST ISSUES ---
                 let issuesString = '';
-                document.querySelectorAll('.warranty-item [data-item-input]').forEach((input, index) => {
-                    const value = input.value.trim();
-                    if (value && !value.startsWith('OK - No Issue')) {
-                         issuesString += `Warranty Item #${index + 1}: ${value}\n`; 
+                let hasIssue = false;
+                
+                document.querySelectorAll('.warranty-item').forEach((item, index) => {
+                    const issueInput = item.querySelector('[data-item-input]');
+                    const commentInput = item.querySelector('.comment-area textarea');
+                    const value = issueInput.value.trim();
+                    
+                    if (value && value !== 'OK') {
+                        hasIssue = true;
+                        
+                        // Start the issue string with the item's main description
+                        let itemReport = `Item #${index + 1}: ${value}`;
+                        
+                        // Append comment if present
+                        if (commentInput && commentInput.value.trim().length > 0) {
+                            itemReport += `\n    Comment: ${commentInput.value.trim()}`;
+                        }
+                        issuesString += itemReport + '\n\n';
                     }
                 });
 
-                if (issuesString === '') {
+                if (!hasIssue) {
                     statusDiv.classList.remove('hidden', 'bg-blue-100', 'text-blue-800', 'bg-red-100', 'text-red-800');
                     statusDiv.classList.add('bg-red-100', 'text-red-800');
-                    statusDiv.innerHTML = '<strong>Validation Error:</strong> Please mark at least one item as an issue, or ensure all required contact fields are filled.';
+                    statusDiv.innerHTML = '<strong>Submission Error:</strong> Please mark at least one item as an issue, or ensure all required contact fields are filled.';
                     submitBtn.disabled = false;
                     return;
                 }
@@ -260,7 +306,7 @@
                     'lot-number': form.elements['lot-number'].value,
                     'serial-number': form.elements['serial-number'].value,
                     'home-manufacturer': form.elements['home-manufacturer'].value,
-                    'part-description': issuesString, // This is now the compiled checklist
+                    'part-description': issuesString, // The compiled checklist with comments
                     'secondary_email': SECONDARY_EMAIL
                 };
                 
