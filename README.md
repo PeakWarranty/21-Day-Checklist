@@ -442,57 +442,37 @@
         /**
          * Handles the final submission of data to the Google Form URL.
          */
-        const handleSubmission = async () => {
-            const { formData, issuesList, finalReportText, submissionDate, finalCommunity } = compileSubmissionData();
+        const handleSubmission = () => {
+            const { formData, finalReportText, submissionDate, finalCommunity } = compileSubmissionData();
             const messageDiv = document.getElementById('submission-message');
             const submitBtn = document.getElementById('submit-button');
             
-            // 1. Prepare Data for Google Form
-            const formBody = new FormData();
-            
-            // Map form data to Google Form Entry IDs
-            formBody.append(FIELD_ENTRY_MAP.homeownerName, formData.homeownerName);
-            formBody.append(FIELD_ENTRY_MAP.community, finalCommunity);
-            formBody.append(FIELD_ENTRY_MAP.lotNumber, formData.lotNumber);
-            formBody.append(FIELD_ENTRY_MAP.serialNumber, formData.serialNumber);
-            formBody.append(FIELD_ENTRY_MAP.contactPhone, formData.contactPhone);
-            formBody.append(FIELD_ENTRY_MAP.email, formData.email);
-            formBody.append(FIELD_ENTRY_MAP.submissionDate, submissionDate);
-            formBody.append(FIELD_ENTRY_MAP.reportedIssues, finalReportText);
-            
-            // 2. Set UI to Sending
+            // 1. Set UI to Sending
             submitBtn.disabled = true;
-            submitBtn.textContent = 'Sending...';
-            setMessage(messageDiv, '⏳ Sending request...', 'bg-blue-100 text-blue-700');
+            submitBtn.textContent = 'Redirecting...';
+            setMessage(messageDiv, '⏳ Submitting request...', 'bg-blue-100 text-blue-700');
 
-            try {
-                // 3. Submit data to the Google Form Action URL
-                // We are relying on the 'no-cors' mode which prevents reading the actual response status, 
-                // but is required for cross-origin Google Form submission.
-                const response = await fetch(GOOGLE_FORM_ACTION_URL, {
-                    method: 'POST',
-                    mode: 'no-cors', 
-                    body: formBody,
-                });
+            // 2. Construct the URL query string using the Entry IDs
+            const params = new URLSearchParams();
+            params.append(FIELD_ENTRY_MAP.homeownerName, formData.homeownerName);
+            params.append(FIELD_ENTRY_MAP.community, finalCommunity);
+            params.append(FIELD_ENTRY_MAP.lotNumber, formData.lotNumber);
+            params.append(FIELD_ENTRY_MAP.serialNumber, formData.serialNumber);
+            params.append(FIELD_ENTRY_MAP.contactPhone, formData.contactPhone);
+            params.append(FIELD_ENTRY_MAP.email, formData.email);
+            params.append(FIELD_ENTRY_MAP.submissionDate, submissionDate);
+            params.append(FIELD_ENTRY_MAP.reportedIssues, finalReportText);
+            
+            // 3. Construct the full submission URL (using GET/FormResponse)
+            const submissionUrl = `${GOOGLE_FORM_ACTION_URL}?${params.toString()}`;
+            
+            // 4. Submit by redirecting the user's browser (most reliable method)
+            // Note: This leaves the app's success state to be handled by the Google Form's success page.
+            window.location.href = submissionUrl;
 
-                // If fetch resolves (no network error), we assume success in 'no-cors' mode.
-                if (response.status === 0 || response.type === 'opaque') {
-                    setMessage(messageDiv, '✅ Success! Your 30-Day Warranty Request has been submitted. Check your spreadsheet.', 'bg-green-100 text-green-700');
-                    submitBtn.textContent = 'Submitted!';
-                } else {
-                    // This block is unlikely to run in 'no-cors' mode but included for robustness
-                    throw new Error(`Submission failed with HTTP status: ${response.status}`);
-                }
-                
-            } catch (error) {
-                console.error('Submission Error:', error);
-                // A network error often means a server blocked the request, which is usually due to an incorrect URL format.
-                setMessage(messageDiv, `❌ Submission failed. Check your browser console for network errors.`, 'bg-red-100 text-red-700');
-                submitBtn.textContent = 'Submit Warranty Request';
-            } finally {
-                // CRITICAL: This guarantees the button is released.
-                submitBtn.disabled = false;
-            }
+            // Since the page redirects, the following code is primarily for internal handling if the redirect fails.
+            // We set a brief success message locally before redirecting.
+            setMessage(messageDiv, '✅ Redirecting to Google Form...', 'bg-green-100 text-green-700');
         };
         
         /**
@@ -518,11 +498,3 @@
     </script>
 </body>
 </html>
-```
-
-## 🎯 Final Troubleshooting Step
-
-Since the app is *still* stuck in "Sending..." even with the most reliable submission method, this means the single line responsible for the network connection is failing:
-
-```javascript
-const response = await fetch(GOOGLE_FORM_ACTION_URL, { ... });
