@@ -549,6 +549,183 @@
                     </div>
                 </div>
                 
+                <h2 class="text-xl font-bold text-gray-800 mt-8 pt-4 border-t border-gray-200">Plumbing, Electrical, & Appliance</h2>
+
+                <div id="item-water-flow-18" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
+                    <div class="flex flex-col justify-between items-start space-y-2">
+                        <div class="flex-1 w-full space-y-1">
+                            <p class="font-semibold text-gray-800" data-item-name="Water Flow/Pressure">Water Flow/Pressure</p>
+                            <div class="flex space-x-4 text-sm text-gray-600">
+                                <span class="font-medium">Location:</span>
+                                <span data-item-location="All Sinks/Tubs">All Sinks/Tubs</span>
+                            </div>
+                            <div class="text-xs text-gray-500 italic" data-item-check="Test all faucets; check for low pressure or unusual noise">
+                                Check: Test all faucets; check for low pressure or unusual noise
+                            </div>
+                            <input type="hidden" name="issue-water-flow-18" data-item-input data-item-index="18" value=""> 
+                        </div>
+                        <div class="button-group-alignment">
+                            <button type="button" data-action="ok" data-item="water-flow-18" class="btn-ok py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">OK</button>
+                            <button type="button" data-action="issue" data-item="water-flow-18" class="btn-issue py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">Issue</button>
+                            <button type="button" data-action="clear" data-item="water-flow-18" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
+                        </div>
+                    </div>
+                    <div class="comment-area space-y-2 mt-3 hidden">
+                        <label for="comment-water-flow-18" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
+                        <textarea id="comment-water-flow-18" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
+                    </div>
+                </div>
+
+                <div id="item-toilets-19" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
+                    <div class="flex flex-col justify-between items-start space-y-2">
+                        <div class="flex-1 w-full space-y-1">
+                            <p class="font-semibold text-gray-800" data-item-name="Toilets">Toilets</p>
+                            <div class="flex space-x-4 text-sm text-gray-600">
+                                <span class="font-medium">Location:</span>
+                                <span data-item-location="All Bathrooms">All Bathrooms</span>
+                            </div>
+                            <div class="text-xs text-gray-500 italic" data-item-check="Flush properly, no running or leaks at the base">
+                                Check: Flush properly, no running or leaks at the base
+                            </div>
+                            <input type="hidden" name="issue-toilets-19" data-item-input data-item-index="19" value=""> 
+                        </div>
+                        <div class="button-group-alignment">
+                            <button type="button" data-action="ok" data-item="toilets-19" class="btn-ok py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">OK</button>
+                            <button type="button" data-action="issue" data-item="toilets-19" class="btn-issue py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">Issue</button>
+                            <button type="button" data-action="clear" data-item="toilets-19" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
+                        </div>
+                    </div>
+                    <div class="comment-area space-y-2 mt-3 hidden">
+                        <label for="comment-toilets-19" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
+                        <textarea id="comment-toilets-19" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
+                    </div>
+                </div>
+
+                <div id="item-water-heater-20" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
+                    <div class="flex flex-col justify-between items-start space-y-2">
+                        <div class="flex-1 w-full space-y-1">
+                            <p class="font-semibold text-gray-800" data-item-name="Water Heater">Water Heater</p>
+                            <div class="flex space-x-4 text-sm text-gray-600">
+                                <span class="font-medium">Location:</span>
+                                <span data-item-location="Utility Closet">Utility Closet</span>
+                            </div>
+                            <div class="text-xs text-gray-500 italic" data-item-check="Functioning (providing hot water). Check for leaks near the unit">
+                                Check: Functioning (providing hot water). Check for leaks near the unit
+                            </div>
+                            <input type="hidden" name="issue-water-heater-20" data-item-input data-item-index="20" value=""> 
+                        </div>
+                        <div class="button-group-alignment">
+                            <button type="button" data-action="ok" data-item="water-heater-20" class="btn-ok py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">OK</button>
+                            <button type="button" data-action="issue" data-item="water-heater-20" class="btn-issue py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">Issue</button>
+                            <button type="button" data-action="clear" data-item="water-heater-20" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
+                        </div>
+                    </div>
+                    <div class="comment-area space-y-2 mt-3 hidden">
+                        <label for="comment-water-heater-20" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
+                        <textarea id="comment-water-heater-20" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
+                    </div>
+                </div>
+
+                <div id="item-gfci-21" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
+                    <div class="flex flex-col justify-between items-start space-y-2">
+                        <div class="flex-1 w-full space-y-1">
+                            <p class="font-semibold text-gray-800" data-item-name="GFCI Outlets">GFCI Outlets</p>
+                            <div class="flex space-x-4 text-sm text-gray-600">
+                                <span class="font-medium">Location:</span>
+                                <span data-item-location="Kitchen/Baths/Exterior">Kitchen/Baths/Exterior</span>
+                            </div>
+                            <div class="text-xs text-gray-500 italic" data-item-check="Press TEST button to ensure they trip, then press RESET">
+                                Check: Press TEST button to ensure they trip, then press RESET
+                            </div>
+                            <input type="hidden" name="issue-gfci-21" data-item-input data-item-index="21" value=""> 
+                        </div>
+                        <div class="button-group-alignment">
+                            <button type="button" data-action="ok" data-item="gfci-21" class="btn-ok py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">OK</button>
+                            <button type="button" data-action="issue" data-item="gfci-21" class="btn-issue py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">Issue</button>
+                            <button type="button" data-action="clear" data-item="gfci-21" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
+                        </div>
+                    </div>
+                    <div class="comment-area space-y-2 mt-3 hidden">
+                        <label for="comment-gfci-21" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
+                        <textarea id="comment-gfci-21" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
+                    </div>
+                </div>
+
+                <div id="item-switches-22" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
+                    <div class="flex flex-col justify-between items-start space-y-2">
+                        <div class="flex-1 w-full space-y-1">
+                            <p class="font-semibold text-gray-800" data-item-name="Switches & Outlets">Switches & Outlets</p>
+                            <div class="flex space-x-4 text-sm text-gray-600">
+                                <span class="font-medium">Location:</span>
+                                <span data-item-location="Throughout">Throughout</span>
+                            </div>
+                            <div class="text-xs text-gray-500 italic" data-item-check="All switches operate their lights/fans; outlets have power">
+                                Check: All switches operate their lights/fans; outlets have power
+                            </div>
+                            <input type="hidden" name="issue-switches-22" data-item-input data-item-index="22" value=""> 
+                        </div>
+                        <div class="button-group-alignment">
+                            <button type="button" data-action="ok" data-item="switches-22" class="btn-ok py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">OK</button>
+                            <button type="button" data-action="issue" data-item="switches-22" class="btn-issue py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">Issue</button>
+                            <button type="button" data-action="clear" data-item="switches-22" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
+                        </div>
+                    </div>
+                    <div class="comment-area space-y-2 mt-3 hidden">
+                        <label for="comment-switches-22" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
+                        <textarea id="comment-switches-22" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
+                    </div>
+                </div>
+
+                <div id="item-alarms-23" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
+                    <div class="flex flex-col justify-between items-start space-y-2">
+                        <div class="flex-1 w-full space-y-1">
+                            <p class="font-semibold text-gray-800" data-item-name="Smoke/Carbon Monoxide Alarms">Smoke/Carbon Monoxide Alarms</p>
+                            <div class="flex space-x-4 text-sm text-gray-600">
+                                <span class="font-medium">Location:</span>
+                                <span data-item-location="Throughout">Throughout</span>
+                            </div>
+                            <div class="text-xs text-gray-500 italic" data-item-check="Test all alarms (usually a test button on the unit)">
+                                Check: Test all alarms (usually a test button on the unit)
+                            </div>
+                            <input type="hidden" name="issue-alarms-23" data-item-input data-item-index="23" value=""> 
+                        </div>
+                        <div class="button-group-alignment">
+                            <button type="button" data-action="ok" data-item="alarms-23" class="btn-ok py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">OK</button>
+                            <button type="button" data-action="issue" data-item="alarms-23" class="btn-issue py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">Issue</button>
+                            <button type="button" data-action="clear" data-item="alarms-23" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
+                        </div>
+                    </div>
+                    <div class="comment-area space-y-2 mt-3 hidden">
+                        <label for="comment-alarms-23" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
+                        <textarea id="comment-alarms-23" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
+                    </div>
+                </div>
+
+                <div id="item-appliances-24" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
+                    <div class="flex flex-col justify-between items-start space-y-2">
+                        <div class="flex-1 w-full space-y-1">
+                            <p class="font-semibold text-gray-800" data-item-name="Appliances">Appliances</p>
+                            <div class="flex space-x-4 text-sm text-gray-600">
+                                <span class="font-medium">Location:</span>
+                                <span data-item-location="Kitchen">Kitchen</span>
+                            </div>
+                            <div class="text-xs text-gray-500 italic" data-item-check="Range, Dishwasher, Microwave, Refrigerator are fully operational">
+                                Check: Range, Dishwasher, Microwave, Refrigerator are fully operational
+                            </div>
+                            <input type="hidden" name="issue-appliances-24" data-item-input data-item-index="24" value=""> 
+                        </div>
+                        <div class="button-group-alignment">
+                            <button type="button" data-action="ok" data-item="appliances-24" class="btn-ok py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">OK</button>
+                            <button type="button" data-action="issue" data-item="appliances-24" class="btn-issue py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">Issue</button>
+                            <button type="button" data-action="clear" data-item="appliances-24" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
+                        </div>
+                    </div>
+                    <div class="comment-area space-y-2 mt-3 hidden">
+                        <label for="comment-appliances-24" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
+                        <textarea id="comment-appliances-24" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
+                    </div>
+                </div>
+                
                 <h2 class="text-xl font-bold text-gray-800 mt-8 pt-4 border-t border-gray-200">Exterior & HVAC</h2>
 
                 <div id="item-siding" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
@@ -562,7 +739,7 @@
                             <div class="text-xs text-gray-500 italic" data-item-check="Missing panels, dents, gaps, or improperly fastened skirting">
                                 Check: Missing panels, dents, gaps, or improperly fastened skirting
                             </div>
-                            <input type="hidden" name="issue-siding" data-item-input data-item-index="18" value=""> 
+                            <input type="hidden" name="issue-siding" data-item-input data-item-index="25" value=""> 
                         </div>
                         <div class="button-group-alignment">
                             <button type="button" data-action="ok" data-item="siding" class="btn-ok py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">OK</button>
@@ -587,7 +764,7 @@
                             <div class="text-xs text-gray-500 italic" data-item-check="Check for loose shingles, damage, or open vents/seals">
                                 Check: Check for loose shingles, damage, or open vents/seals
                             </div>
-                            <input type="hidden" name="issue-roof" data-item-input data-item-index="19" value=""> 
+                            <input type="hidden" name="issue-roof" data-item-input data-item-index="26" value=""> 
                         </div>
                         <div class="button-group-alignment">
                             <button type="button" data-action="ok" data-item="roof" class="btn-ok py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">OK</button>
@@ -612,7 +789,7 @@
                             <div class="text-xs text-gray-500 italic" data-item-check="Run both Heat and Cooling cycles to ensure proper function">
                                 Check: Run both Heat and Cooling cycles to ensure proper function
                             </div>
-                            <input type="hidden" name="issue-hvac" data-item-input data-item-index="20" value=""> 
+                            <input type="hidden" name="issue-hvac" data-item-input data-item-index="27" value=""> 
                         </div>
                         <div class="button-group-alignment">
                             <button type="button" data-action="ok" data-item="hvac" class="btn-ok py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">OK</button>
@@ -637,7 +814,7 @@
                             <div class="text-xs text-gray-500 italic" data-item-check="Vents are securely fastened and air is flowing strongly to all rooms">
                                 Check: Vents are securely fastened and air is flowing strongly to all rooms
                             </div>
-                            <input type="hidden" name="issue-ductwork" data-item-input data-item-index="21" value=""> 
+                            <input type="hidden" name="issue-ductwork" data-item-input data-item-index="28" value=""> 
                         </div>
                         <div class="button-group-alignment">
                             <button type="button" data-action="ok" data-item="ductwork" class="btn-ok py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">OK</button>
@@ -662,7 +839,7 @@
                             <div class="text-xs text-gray-500 italic" data-item-check="Check for noticeable slopes in floors or difficulty closing doors (structural issue)">
                                 Check: Check for noticeable slopes in floors or difficulty closing doors (structural issue)
                             </div>
-                            <input type="hidden" name="issue-leveling" data-item-input data-item-index="22" value=""> 
+                            <input type="hidden" name="issue-leveling" data-item-input data-item-index="29" value=""> 
                         </div>
                         <div class="button-group-alignment">
                             <button type="button" data-action="ok" data-item="leveling" class="btn-ok py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">OK</button>
@@ -687,7 +864,7 @@
                             <div class="text-xs text-gray-500 italic" data-item-check="Visibly check anchors/straps for obvious signs of looseness or damage">
                                 Check: Visibly check anchors/straps for obvious signs of looseness or damage
                             </div>
-                            <input type="hidden" name="issue-tie-downs" data-item-input data-item-index="23" value=""> 
+                            <input type="hidden" name="issue-tie-downs" data-item-input data-item-index="30" value=""> 
                         </div>
                         <div class="button-group-alignment">
                             <button type="button" data-action="ok" data-item="tie-downs" class="btn-ok py-1 px-3 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100 transition duration-150 ease-in-out">OK</button>
@@ -717,9 +894,9 @@
             // !!! IMPORTANT: REPLACE THESE WITH YOUR ACTUAL EmailJS CREDENTIALS !!!
             const USER_ID = 'bSgwpRuVeEky48mPe';  
             const SERVICE_ID = 'service_7lbsq24';
-            const TEMPLATE_ID_STAFF = 'template_dvr6oem'; 
-            // UPDATED TEMPLATE ID FOR CONFIRMATION
+            // Renamed and assigned new template IDs
             const TEMPLATE_ID_CONFIRMATION = 'template_of2vt65'; 
+            const TEMPLATE_ID_STAFF = 'template_2a7qx72'; 
             const SECONDARY_EMAIL = 'warranty@peakmhc.com'; 
 
             const form = document.getElementById('parts-form');
@@ -737,7 +914,7 @@
             const contactEmailInput = document.getElementById('contact-email');
 
 
-            // --- CHECKLIST LOGIC ---
+            // --- CHECKLIST LOGIC (Remains the same) ---
             checklistContainer.addEventListener('click', function(event) {
                 const button = event.target.closest('button');
                 if (!button) return;
@@ -761,24 +938,23 @@
                     itemDiv.classList.add('status-ok');
                     issueInput.value = 'OK'; 
                     commentArea.classList.add('hidden');
-                    commentInput.value = ''; // Clear comment if OK
+                    commentInput.value = ''; 
                 } else if (action === 'issue') {
                     button.classList.add('btn-issue-active');
                     itemDiv.classList.add('status-issue');
                     
-                    // Set the primary issue value
                     const itemName = itemDiv.querySelector('[data-item-name]').textContent.trim();
                     const itemLocation = itemDiv.querySelector('[data-item-location]').textContent.trim();
                     const itemCheck = itemDiv.querySelector('[data-item-check]').textContent.replace('Check: ', '').trim();
 
                     issueInput.value = `ISSUE: ${itemName} (Location: ${itemLocation}). Check: ${itemCheck}`;
                     
-                    commentArea.classList.remove('hidden'); // Show comment box
+                    commentArea.classList.remove('hidden'); 
 
                 } else if (action === 'clear') {
                     issueInput.value = ''; 
                     commentInput.value = '';
-                    commentArea.classList.add('hidden'); // Hide comment box
+                    commentArea.classList.add('hidden'); 
                 }
             });
             // --- END CHECKLIST LOGIC ---
@@ -831,21 +1007,16 @@
                 let issuesString = '';
                 let hasIssue = false;
                 
-                // Iterate through ALL warranty items across all sections
                 document.querySelectorAll('.warranty-item').forEach((item, index) => {
                     const issueInput = item.querySelector('[data-item-input]');
                     const commentInput = item.querySelector('.comment-area textarea');
                     const value = issueInput.value.trim();
                     
-                    // Check for issues (anything that isn't empty or 'OK')
                     if (value && value !== 'OK') {
                         hasIssue = true;
                         
-                        // Start the issue string with the item's main description
-                        // Note: index starts at 0, so we use index + 1 for Item #
                         let itemReport = `Item #${index + 1}: ${value}`;
                         
-                        // Append comment if present
                         if (commentInput && commentInput.value.trim().length > 0) {
                             itemReport += `\n    Comment: ${commentInput.value.trim()}`;
                         }
@@ -875,7 +1046,7 @@
 
                 // --- 1. PARAMETERS FOR BOTH EMAILS ---
                 const emailParams = {
-                    'to_email': contactEmailInput.value, // Used to direct confirmation email
+                    'to_email': contactEmailInput.value, // Used for confirmation (template_of2vt65)
                     'user-name': 'Homeowner', 
                     'homeowner-name': homeownerNameInput.value,
                     'contact-phone': contactPhoneInput.value,
@@ -886,14 +1057,16 @@
                     'serial-number': form.elements['serial-number'].value,
                     'home-manufacturer': form.elements['home-manufacturer'].value,
                     'part-description': issuesString, // The compiled checklist with comments
-                    'secondary_email': SECONDARY_EMAIL
+                    'secondary_email': SECONDARY_EMAIL // Used to direct staff email
                 };
                 
-                // --- 2. SEND PRIMARY EMAIL (to staff/peakmhc.com) ---
-                const primarySend = emailjs.send(SERVICE_ID, TEMPLATE_ID_STAFF, emailParams);
-                
-                // --- 3. SEND CONFIRMATION EMAIL (to homeowner) ---
+                // --- 2. SEND CONFIRMATION EMAIL (to homeowner - template_of2vt65) ---
+                // The 'to_email' parameter is used to send the email to the homeowner's email address
                 const confirmationSend = emailjs.send(SERVICE_ID, TEMPLATE_ID_CONFIRMATION, emailParams);
+                
+                // --- 3. SEND STAFF NOTIFICATION EMAIL (to secondary_email - template_2a7qx72) ---
+                // The 'secondary_email' parameter is used to send the email to the staff address
+                const primarySend = emailjs.send(SERVICE_ID, TEMPLATE_ID_STAFF, emailParams);
 
 
                 // --- 4. HANDLE BOTH PROMISES ---
