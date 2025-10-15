@@ -41,6 +41,11 @@
             padding-left: 0.75rem; 
             padding-right: 0.75rem; 
         }
+        /* Style for visual indication of unaddressed items */
+        .unaddressed-item {
+            border: 2px solid #f87171 !important;
+            box-shadow: 0 0 5px rgba(248, 113, 113, 0.5);
+        }
     </style>
 </head>
 <body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
@@ -894,7 +899,6 @@
             // !!! IMPORTANT: REPLACE THESE WITH YOUR ACTUAL EmailJS CREDENTIALS !!!
             const USER_ID = 'bSgwpRuVeEky48mPe';  
             const SERVICE_ID = 'service_7lbsq24';
-            // Renamed and assigned new template IDs
             const TEMPLATE_ID_CONFIRMATION = 'template_of2vt65'; 
             const TEMPLATE_ID_STAFF = 'template_2a7qx72'; 
             const SECONDARY_EMAIL = 'warranty@peakmhc.com'; 
@@ -930,7 +934,7 @@
                     btn.classList.remove('btn-ok-active', 'btn-issue-active');
                 });
                 // 2. Remove visual status classes
-                itemDiv.classList.remove('status-ok', 'status-issue');
+                itemDiv.classList.remove('status-ok', 'status-issue', 'unaddressed-item');
 
 
                 if (action === 'ok') {
@@ -972,7 +976,7 @@
 
                 // Reset checklist items visually and internally
                 document.querySelectorAll('.warranty-item').forEach(item => {
-                    item.classList.remove('status-ok', 'status-issue');
+                    item.classList.remove('status-ok', 'status-issue', 'unaddressed-item');
                     item.querySelector('[data-item-input]').value = '';
                     item.querySelector('.comment-area').classList.add('hidden');
                     item.querySelector('.comment-area textarea').value = '';
@@ -1002,8 +1006,35 @@
 
             document.getElementById('parts-form').addEventListener('submit', function(event) {
                 event.preventDefault();
+
+                // 1. INITIAL FORM VALIDATION (Browser check for required HTML fields)
+                if (!form.checkValidity()) {
+                    // This triggers the browser's native error popups for required fields
+                    submitBtn.disabled = false;
+                    return;
+                }
                 
-                // --- COMPILE CHECKLIST ISSUES ---
+                // 2. CHECKLIST VALIDATION: Ensure ALL items are marked OK or Issue
+                let allItemsAddressed = true;
+                document.querySelectorAll('.warranty-item').forEach(item => {
+                    item.classList.remove('unaddressed-item'); // Clear previous visual warnings
+                    const value = item.querySelector('[data-item-input]').value.trim();
+                    
+                    if (value === '') {
+                        allItemsAddressed = false;
+                        item.classList.add('unaddressed-item'); // Highlight unaddressed item
+                    }
+                });
+
+                if (!allItemsAddressed) {
+                    statusDiv.classList.remove('hidden', 'bg-blue-100', 'text-blue-800', 'bg-green-100', 'text-green-800');
+                    statusDiv.classList.add('bg-red-100', 'text-red-800');
+                    statusDiv.innerHTML = '<strong>Validation Error:</strong> Please mark every item as either **OK** or **Issue** before submitting.';
+                    submitBtn.disabled = false;
+                    return;
+                }
+
+                // 3. COMPILE CHECKLIST ISSUES (At least one Issue must be marked)
                 let issuesString = '';
                 let hasIssue = false;
                 
@@ -1024,10 +1055,11 @@
                     }
                 });
 
+                // 4. CHECK IF THERE ARE ANY ISSUES REPORTED
                 if (!hasIssue) {
-                    statusDiv.classList.remove('hidden', 'bg-blue-100', 'text-blue-800', 'bg-red-100', 'text-red-800');
+                    statusDiv.classList.remove('hidden', 'bg-blue-100', 'text-blue-800', 'bg-green-100', 'text-green-800');
                     statusDiv.classList.add('bg-red-100', 'text-red-800');
-                    statusDiv.innerHTML = '<strong>Submission Error:</strong> Please mark at least one item as an issue, or ensure all required contact fields are filled.';
+                    statusDiv.innerHTML = '<strong>Submission Error:</strong> All items are marked OK. Please mark at least one item as an **Issue** if you wish to proceed with a warranty request.';
                     submitBtn.disabled = false;
                     return;
                 }
@@ -1044,9 +1076,9 @@
                     ? otherCommunityInput.value 
                     : communitySelect.value;
 
-                // --- 1. PARAMETERS FOR BOTH EMAILS ---
+                // --- PARAMETERS FOR BOTH EMAILS ---
                 const emailParams = {
-                    'to_email': contactEmailInput.value, // Used for confirmation (template_of2vt65)
+                    'to_email': contactEmailInput.value, 
                     'user-name': 'Homeowner', 
                     'homeowner-name': homeownerNameInput.value,
                     'contact-phone': contactPhoneInput.value,
@@ -1056,20 +1088,16 @@
                     'lot-number': form.elements['lot-number'].value,
                     'serial-number': form.elements['serial-number'].value,
                     'home-manufacturer': form.elements['home-manufacturer'].value,
-                    'part-description': issuesString, // The compiled checklist with comments
-                    'secondary_email': SECONDARY_EMAIL // Used to direct staff email
+                    'part-description': issuesString, 
+                    'secondary_email': SECONDARY_EMAIL 
                 };
                 
-                // --- 2. SEND CONFIRMATION EMAIL (to homeowner - template_of2vt65) ---
-                // The 'to_email' parameter is used to send the email to the homeowner's email address
+                // SEND EMAILS
                 const confirmationSend = emailjs.send(SERVICE_ID, TEMPLATE_ID_CONFIRMATION, emailParams);
-                
-                // --- 3. SEND STAFF NOTIFICATION EMAIL (to secondary_email - template_2a7qx72) ---
-                // The 'secondary_email' parameter is used to send the email to the staff address
                 const primarySend = emailjs.send(SERVICE_ID, TEMPLATE_ID_STAFF, emailParams);
 
 
-                // --- 4. HANDLE BOTH PROMISES ---
+                // HANDLE BOTH PROMISES
                 Promise.all([primarySend, confirmationSend])
                     .then(function() {
                         statusDiv.classList.remove('bg-blue-100', 'text-blue-800');
