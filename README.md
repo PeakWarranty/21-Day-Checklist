@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>30 Day Move-in Warranty Checklist</title>
+    <title>21-Day Move-in Warranty Checklist</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <style>
@@ -46,11 +46,13 @@
             border: 2px solid #f87171 !important;
             box-shadow: 0 0 5px rgba(248, 113, 113, 0.5);
         }
+        .photo-ready { color: #059669; }
+        .photo-error { color: #dc2626; }
     </style>
 </head>
 <body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
     <div class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-2xl border border-gray-200">
-        <h1 class="text-3xl font-bold text-center text-gray-800 mb-2">30 Day Move-in Warranty Checklist</h1>
+        <h1 class="text-3xl font-bold text-center text-gray-800 mb-2">21-Day Move-in Warranty Checklist</h1>
         <p class="text-center text-gray-500 mb-6">Fill out the form below to submit a request.
             <br>
         </p>
@@ -126,7 +128,8 @@
                 
                 <h2 class="text-xl font-bold text-gray-800">Interior: Cosmetic & Structure</h2>
 
-                <div id="item-batten-strips" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
+                <!-- Item 1: Batten Strips/Trim -->
+                <div id="item-batten-strips" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out" data-photo-base64="" data-photo-name="">
                     <div class="flex flex-col justify-between items-start space-y-2">
                         <div class="flex-1 w-full space-y-1">
                             <p class="font-semibold text-gray-800" data-item-name="Batten Strips/Trim">Batten Strips/Trim</p>
@@ -145,13 +148,18 @@
                             <button type="button" data-action="clear" data-item="batten-strips" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
                         </div>
                     </div>
-                    <div class="comment-area space-y-2 mt-3 hidden">
+                    <div class="comment-area space-y-2 mt-3 hidden" data-item-id="batten-strips">
                         <label for="comment-batten-strips" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
                         <textarea id="comment-batten-strips" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
+                        <!-- UPDATED: Photo Upload with camera capture and resizing note -->
+                        <label class="block text-xs font-medium text-gray-600 pt-2">Attach Photo (Will be auto-resized to 1024px):</label>
+                        <input type="file" id="photo-batten-strips" accept="image/*" capture="camera" data-photo-input class="text-xs w-full p-1 border border-gray-300 rounded-md bg-white cursor-pointer" onchange="handlePhotoChange(this)">
+                        <div data-photo-status class="text-xs mt-1 font-semibold text-gray-500 min-h-[1.25rem]"></div>
                     </div>
                 </div>
 
-                <div id="item-wall-seams" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
+                <!-- Item 2: Wall/Ceiling Seams -->
+                <div id="item-wall-seams" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out" data-photo-base64="" data-photo-name="">
                     <div class="flex flex-col justify-between items-start space-y-2">
                         <div class="flex-1 w-full space-y-1">
                             <p class="font-semibold text-gray-800" data-item-name="Wall/Ceiling Seams">Wall/Ceiling Seams</p>
@@ -170,13 +178,18 @@
                             <button type="button" data-action="clear" data-item="wall-seams" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
                         </div>
                     </div>
-                    <div class="comment-area space-y-2 mt-3 hidden">
+                    <div class="comment-area space-y-2 mt-3 hidden" data-item-id="wall-seams">
                         <label for="comment-wall-seams" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
                         <textarea id="comment-wall-seams" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
+                        <!-- UPDATED: Photo Upload with camera capture and resizing note -->
+                        <label class="block text-xs font-medium text-gray-600 pt-2">Attach Photo (Will be auto-resized to 1024px):</label>
+                        <input type="file" id="photo-wall-seams" accept="image/*" capture="camera" data-photo-input class="text-xs w-full p-1 border border-gray-300 rounded-md bg-white cursor-pointer" onchange="handlePhotoChange(this)">
+                        <div data-photo-status class="text-xs mt-1 font-semibold text-gray-500 min-h-[1.25rem]"></div>
                     </div>
                 </div>
 
-                <div id="item-flooring" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
+                <!-- Item 3: Flooring -->
+                <div id="item-flooring" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out" data-photo-base64="" data-photo-name="">
                     <div class="flex flex-col justify-between items-start space-y-2">
                         <div class="flex-1 w-full space-y-1">
                             <p class="font-semibold text-gray-800" data-item-name="Flooring">Flooring</p>
@@ -195,13 +208,18 @@
                             <button type="button" data-action="clear" data-item="flooring" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
                         </div>
                     </div>
-                    <div class="comment-area space-y-2 mt-3 hidden">
+                    <div class="comment-area space-y-2 mt-3 hidden" data-item-id="flooring">
                         <label for="comment-flooring" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
                         <textarea id="comment-flooring" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
+                        <!-- UPDATED: Photo Upload with camera capture and resizing note -->
+                        <label class="block text-xs font-medium text-gray-600 pt-2">Attach Photo (Will be auto-resized to 1024px):</label>
+                        <input type="file" id="photo-flooring" accept="image/*" capture="camera" data-photo-input class="text-xs w-full p-1 border border-gray-300 rounded-md bg-white cursor-pointer" onchange="handlePhotoChange(this)">
+                        <div data-photo-status class="text-xs mt-1 font-semibold text-gray-500 min-h-[1.25rem]"></div>
                     </div>
                 </div>
 
-                <div id="item-doors-interior" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
+                <!-- Item 4: Doors (Interior) -->
+                <div id="item-doors-interior" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out" data-photo-base64="" data-photo-name="">
                     <div class="flex flex-col justify-between items-start space-y-2">
                         <div class="flex-1 w-full space-y-1">
                             <p class="font-semibold text-gray-800" data-item-name="Doors (Interior)">Doors (Interior)</p>
@@ -220,13 +238,18 @@
                             <button type="button" data-action="clear" data-item="doors-interior" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
                         </div>
                     </div>
-                    <div class="comment-area space-y-2 mt-3 hidden">
+                    <div class="comment-area space-y-2 mt-3 hidden" data-item-id="doors-interior">
                         <label for="comment-doors-interior" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
                         <textarea id="comment-doors-interior" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
+                        <!-- UPDATED: Photo Upload with camera capture and resizing note -->
+                        <label class="block text-xs font-medium text-gray-600 pt-2">Attach Photo (Will be auto-resized to 1024px):</label>
+                        <input type="file" id="photo-doors-interior" accept="image/*" capture="camera" data-photo-input class="text-xs w-full p-1 border border-gray-300 rounded-md bg-white cursor-pointer" onchange="handlePhotoChange(this)">
+                        <div data-photo-status class="text-xs mt-1 font-semibold text-gray-500 min-h-[1.25rem]"></div>
                     </div>
                 </div>
                 
-                <div id="item-doors-exterior" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
+                <!-- Item 5: Doors (Exterior) -->
+                <div id="item-doors-exterior" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out" data-photo-base64="" data-photo-name="">
                     <div class="flex flex-col justify-between items-start space-y-2">
                         <div class="flex-1 w-full space-y-1">
                             <p class="font-semibold text-gray-800" data-item-name="Doors (Exterior)">Doors (Exterior)</p>
@@ -245,13 +268,18 @@
                             <button type="button" data-action="clear" data-item="doors-exterior" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
                         </div>
                     </div>
-                    <div class="comment-area space-y-2 mt-3 hidden">
+                    <div class="comment-area space-y-2 mt-3 hidden" data-item-id="doors-exterior">
                         <label for="comment-doors-exterior" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
                         <textarea id="comment-doors-exterior" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
+                        <!-- UPDATED: Photo Upload with camera capture and resizing note -->
+                        <label class="block text-xs font-medium text-gray-600 pt-2">Attach Photo (Will be auto-resized to 1024px):</label>
+                        <input type="file" id="photo-doors-exterior" accept="image/*" capture="camera" data-photo-input class="text-xs w-full p-1 border border-gray-300 rounded-md bg-white cursor-pointer" onchange="handlePhotoChange(this)">
+                        <div data-photo-status class="text-xs mt-1 font-semibold text-gray-500 min-h-[1.25rem]"></div>
                     </div>
                 </div>
                 
-                <div id="item-cabinets" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
+                <!-- Item 6: Cabinets/Drawers -->
+                <div id="item-cabinets" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out" data-photo-base64="" data-photo-name="">
                     <div class="flex flex-col justify-between items-start space-y-2">
                         <div class="flex-1 w-full space-y-1">
                             <p class="font-semibold text-gray-800" data-item-name="Cabinets/Drawers">Cabinets/Drawers</p>
@@ -270,13 +298,18 @@
                             <button type="button" data-action="clear" data-item="cabinets" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
                         </div>
                     </div>
-                    <div class="comment-area space-y-2 mt-3 hidden">
+                    <div class="comment-area space-y-2 mt-3 hidden" data-item-id="cabinets">
                         <label for="comment-cabinets" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
                         <textarea id="comment-cabinets" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
+                        <!-- UPDATED: Photo Upload with camera capture and resizing note -->
+                        <label class="block text-xs font-medium text-gray-600 pt-2">Attach Photo (Will be auto-resized to 1024px):</label>
+                        <input type="file" id="photo-cabinets" accept="image/*" capture="camera" data-photo-input class="text-xs w-full p-1 border border-gray-300 rounded-md bg-white cursor-pointer" onchange="handlePhotoChange(this)">
+                        <div data-photo-status class="text-xs mt-1 font-semibold text-gray-500 min-h-[1.25rem]"></div>
                     </div>
                 </div>
 
-                <div id="item-countertops" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
+                <!-- Item 7: Countertops -->
+                <div id="item-countertops" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out" data-photo-base64="" data-photo-name="">
                     <div class="flex flex-col justify-between items-start space-y-2">
                         <div class="flex-1 w-full space-y-1">
                             <p class="font-semibold text-gray-800" data-item-name="Countertops">Countertops</p>
@@ -295,13 +328,18 @@
                             <button type="button" data-action="clear" data-item="countertops" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
                         </div>
                     </div>
-                    <div class="comment-area space-y-2 mt-3 hidden">
+                    <div class="comment-area space-y-2 mt-3 hidden" data-item-id="countertops">
                         <label for="comment-countertops" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
                         <textarea id="comment-countertops" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
+                        <!-- UPDATED: Photo Upload with camera capture and resizing note -->
+                        <label class="block text-xs font-medium text-gray-600 pt-2">Attach Photo (Will be auto-resized to 1024px):</label>
+                        <input type="file" id="photo-countertops" accept="image/*" capture="camera" data-photo-input class="text-xs w-full p-1 border border-gray-300 rounded-md bg-white cursor-pointer" onchange="handlePhotoChange(this)">
+                        <div data-photo-status class="text-xs mt-1 font-semibold text-gray-500 min-h-[1.25rem]"></div>
                     </div>
                 </div>
 
-                <div id="item-vinyl-laminate" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
+                <!-- Item 8: Vinyl/Laminate -->
+                <div id="item-vinyl-laminate" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out" data-photo-base64="" data-photo-name="">
                     <div class="flex flex-col justify-between items-start space-y-2">
                         <div class="flex-1 w-full space-y-1">
                             <p class="font-semibold text-gray-800" data-item-name="Vinyl/Laminate">Vinyl/Laminate</p>
@@ -320,13 +358,18 @@
                             <button type="button" data-action="clear" data-item="vinyl-laminate" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
                         </div>
                     </div>
-                    <div class="comment-area space-y-2 mt-3 hidden">
+                    <div class="comment-area space-y-2 mt-3 hidden" data-item-id="vinyl-laminate">
                         <label for="comment-vinyl-laminate" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
                         <textarea id="comment-vinyl-laminate" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
+                        <!-- UPDATED: Photo Upload with camera capture and resizing note -->
+                        <label class="block text-xs font-medium text-gray-600 pt-2">Attach Photo (Will be auto-resized to 1024px):</label>
+                        <input type="file" id="photo-vinyl-laminate" accept="image/*" capture="camera" data-photo-input class="text-xs w-full p-1 border border-gray-300 rounded-md bg-white cursor-pointer" onchange="handlePhotoChange(this)">
+                        <div data-photo-status class="text-xs mt-1 font-semibold text-gray-500 min-h-[1.25rem]"></div>
                     </div>
                 </div>
 
-                <div id="item-windows" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
+                <!-- Item 9: Windows -->
+                <div id="item-windows" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out" data-photo-base64="" data-photo-name="">
                     <div class="flex flex-col justify-between items-start space-y-2">
                         <div class="flex-1 w-full space-y-1">
                             <p class="font-semibold text-gray-800" data-item-name="Windows">Windows</p>
@@ -345,13 +388,18 @@
                             <button type="button" data-action="clear" data-item="windows" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
                         </div>
                     </div>
-                    <div class="comment-area space-y-2 mt-3 hidden">
+                    <div class="comment-area space-y-2 mt-3 hidden" data-item-id="windows">
                         <label for="comment-windows" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
                         <textarea id="comment-windows" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
+                        <!-- UPDATED: Photo Upload with camera capture and resizing note -->
+                        <label class="block text-xs font-medium text-gray-600 pt-2">Attach Photo (Will be auto-resized to 1024px):</label>
+                        <input type="file" id="photo-windows" accept="image/*" capture="camera" data-photo-input class="text-xs w-full p-1 border border-gray-300 rounded-md bg-white cursor-pointer" onchange="handlePhotoChange(this)">
+                        <div data-photo-status class="text-xs mt-1 font-semibold text-gray-500 min-h-[1.25rem]"></div>
                     </div>
                 </div>
 
-                <div id="item-faucets" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
+                <!-- Item 10: Faucets/Fixtures -->
+                <div id="item-faucets" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out" data-photo-base64="" data-photo-name="">
                     <div class="flex flex-col justify-between items-start space-y-2">
                         <div class="flex-1 w-full space-y-1">
                             <p class="font-semibold text-gray-800" data-item-name="Faucets/Fixtures">Faucets/Fixtures</p>
@@ -370,16 +418,21 @@
                             <button type="button" data-action="clear" data-item="faucets" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
                         </div>
                     </div>
-                    <div class="comment-area space-y-2 mt-3 hidden">
+                    <div class="comment-area space-y-2 mt-3 hidden" data-item-id="faucets">
                         <label for="comment-faucets" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
                         <textarea id="comment-faucets" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
+                        <!-- UPDATED: Photo Upload with camera capture and resizing note -->
+                        <label class="block text-xs font-medium text-gray-600 pt-2">Attach Photo (Will be auto-resized to 1024px):</label>
+                        <input type="file" id="photo-faucets" accept="image/*" capture="camera" data-photo-input class="text-xs w-full p-1 border border-gray-300 rounded-md bg-white cursor-pointer" onchange="handlePhotoChange(this)">
+                        <div data-photo-status class="text-xs mt-1 font-semibold text-gray-500 min-h-[1.25rem]"></div>
                     </div>
                 </div>
 
 
                 <h2 class="text-xl font-bold text-gray-800 mt-8 pt-4 border-t border-gray-200">Plumbing, Electrical, & Appliance</h2>
 
-                <div id="item-water-flow-11" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
+                <!-- Item 11: Water Flow/Pressure -->
+                <div id="item-water-flow-11" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out" data-photo-base64="" data-photo-name="">
                     <div class="flex flex-col justify-between items-start space-y-2">
                         <div class="flex-1 w-full space-y-1">
                             <p class="font-semibold text-gray-800" data-item-name="Water Flow/Pressure">Water Flow/Pressure</p>
@@ -398,13 +451,18 @@
                             <button type="button" data-action="clear" data-item="water-flow-11" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
                         </div>
                     </div>
-                    <div class="comment-area space-y-2 mt-3 hidden">
+                    <div class="comment-area space-y-2 mt-3 hidden" data-item-id="water-flow-11">
                         <label for="comment-water-flow-11" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
                         <textarea id="comment-water-flow-11" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
+                        <!-- UPDATED: Photo Upload with camera capture and resizing note -->
+                        <label class="block text-xs font-medium text-gray-600 pt-2">Attach Photo (Will be auto-resized to 1024px):</label>
+                        <input type="file" id="photo-water-flow-11" accept="image/*" capture="camera" data-photo-input class="text-xs w-full p-1 border border-gray-300 rounded-md bg-white cursor-pointer" onchange="handlePhotoChange(this)">
+                        <div data-photo-status class="text-xs mt-1 font-semibold text-gray-500 min-h-[1.25rem]"></div>
                     </div>
                 </div>
 
-                <div id="item-toilets-12" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
+                <!-- Item 12: Toilets -->
+                <div id="item-toilets-12" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out" data-photo-base64="" data-photo-name="">
                     <div class="flex flex-col justify-between items-start space-y-2">
                         <div class="flex-1 w-full space-y-1">
                             <p class="font-semibold text-gray-800" data-item-name="Toilets">Toilets</p>
@@ -423,13 +481,18 @@
                             <button type="button" data-action="clear" data-item="toilets-12" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
                         </div>
                     </div>
-                    <div class="comment-area space-y-2 mt-3 hidden">
+                    <div class="comment-area space-y-2 mt-3 hidden" data-item-id="toilets-12">
                         <label for="comment-toilets-12" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
                         <textarea id="comment-toilets-12" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
+                        <!-- UPDATED: Photo Upload with camera capture and resizing note -->
+                        <label class="block text-xs font-medium text-gray-600 pt-2">Attach Photo (Will be auto-resized to 1024px):</label>
+                        <input type="file" id="photo-toilets-12" accept="image/*" capture="camera" data-photo-input class="text-xs w-full p-1 border border-gray-300 rounded-md bg-white cursor-pointer" onchange="handlePhotoChange(this)">
+                        <div data-photo-status class="text-xs mt-1 font-semibold text-gray-500 min-h-[1.25rem]"></div>
                     </div>
                 </div>
 
-                <div id="item-water-heater-13" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
+                <!-- Item 13: Water Heater -->
+                <div id="item-water-heater-13" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out" data-photo-base64="" data-photo-name="">
                     <div class="flex flex-col justify-between items-start space-y-2">
                         <div class="flex-1 w-full space-y-1">
                             <p class="font-semibold text-gray-800" data-item-name="Water Heater">Water Heater</p>
@@ -448,13 +511,18 @@
                             <button type="button" data-action="clear" data-item="water-heater-13" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
                         </div>
                     </div>
-                    <div class="comment-area space-y-2 mt-3 hidden">
+                    <div class="comment-area space-y-2 mt-3 hidden" data-item-id="water-heater-13">
                         <label for="comment-water-heater-13" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
                         <textarea id="comment-water-heater-13" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
+                        <!-- UPDATED: Photo Upload with camera capture and resizing note -->
+                        <label class="block text-xs font-medium text-gray-600 pt-2">Attach Photo (Will be auto-resized to 1024px):</label>
+                        <input type="file" id="photo-water-heater-13" accept="image/*" capture="camera" data-photo-input class="text-xs w-full p-1 border border-gray-300 rounded-md bg-white cursor-pointer" onchange="handlePhotoChange(this)">
+                        <div data-photo-status class="text-xs mt-1 font-semibold text-gray-500 min-h-[1.25rem]"></div>
                     </div>
                 </div>
 
-                <div id="item-gfci-14" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
+                <!-- Item 14: GFCI Outlets -->
+                <div id="item-gfci-14" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out" data-photo-base64="" data-photo-name="">
                     <div class="flex flex-col justify-between items-start space-y-2">
                         <div class="flex-1 w-full space-y-1">
                             <p class="font-semibold text-gray-800" data-item-name="GFCI Outlets">GFCI Outlets</p>
@@ -473,13 +541,18 @@
                             <button type="button" data-action="clear" data-item="gfci-14" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
                         </div>
                     </div>
-                    <div class="comment-area space-y-2 mt-3 hidden">
+                    <div class="comment-area space-y-2 mt-3 hidden" data-item-id="gfci-14">
                         <label for="comment-gfci-14" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
                         <textarea id="comment-gfci-14" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
+                        <!-- UPDATED: Photo Upload with camera capture and resizing note -->
+                        <label class="block text-xs font-medium text-gray-600 pt-2">Attach Photo (Will be auto-resized to 1024px):</label>
+                        <input type="file" id="photo-gfci-14" accept="image/*" capture="camera" data-photo-input class="text-xs w-full p-1 border border-gray-300 rounded-md bg-white cursor-pointer" onchange="handlePhotoChange(this)">
+                        <div data-photo-status class="text-xs mt-1 font-semibold text-gray-500 min-h-[1.25rem]"></div>
                     </div>
                 </div>
 
-                <div id="item-switches-15" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
+                <!-- Item 15: Switches & Outlets -->
+                <div id="item-switches-15" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out" data-photo-base64="" data-photo-name="">
                     <div class="flex flex-col justify-between items-start space-y-2">
                         <div class="flex-1 w-full space-y-1">
                             <p class="font-semibold text-gray-800" data-item-name="Switches & Outlets">Switches & Outlets</p>
@@ -498,13 +571,18 @@
                             <button type="button" data-action="clear" data-item="switches-15" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
                         </div>
                     </div>
-                    <div class="comment-area space-y-2 mt-3 hidden">
+                    <div class="comment-area space-y-2 mt-3 hidden" data-item-id="switches-15">
                         <label for="comment-switches-15" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
                         <textarea id="comment-switches-15" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
+                        <!-- UPDATED: Photo Upload with camera capture and resizing note -->
+                        <label class="block text-xs font-medium text-gray-600 pt-2">Attach Photo (Will be auto-resized to 1024px):</label>
+                        <input type="file" id="photo-switches-15" accept="image/*" capture="camera" data-photo-input class="text-xs w-full p-1 border border-gray-300 rounded-md bg-white cursor-pointer" onchange="handlePhotoChange(this)">
+                        <div data-photo-status class="text-xs mt-1 font-semibold text-gray-500 min-h-[1.25rem]"></div>
                     </div>
                 </div>
 
-                <div id="item-alarms-16" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
+                <!-- Item 16: Smoke/Carbon Monoxide Alarms -->
+                <div id="item-alarms-16" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out" data-photo-base64="" data-photo-name="">
                     <div class="flex flex-col justify-between items-start space-y-2">
                         <div class="flex-1 w-full space-y-1">
                             <p class="font-semibold text-gray-800" data-item-name="Smoke/Carbon Monoxide Alarms">Smoke/Carbon Monoxide Alarms</p>
@@ -523,13 +601,18 @@
                             <button type="button" data-action="clear" data-item="alarms-16" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
                         </div>
                     </div>
-                    <div class="comment-area space-y-2 mt-3 hidden">
+                    <div class="comment-area space-y-2 mt-3 hidden" data-item-id="alarms-16">
                         <label for="comment-alarms-16" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
                         <textarea id="comment-alarms-16" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
+                        <!-- UPDATED: Photo Upload with camera capture and resizing note -->
+                        <label class="block text-xs font-medium text-gray-600 pt-2">Attach Photo (Will be auto-resized to 1024px):</label>
+                        <input type="file" id="photo-alarms-16" accept="image/*" capture="camera" data-photo-input class="text-xs w-full p-1 border border-gray-300 rounded-md bg-white cursor-pointer" onchange="handlePhotoChange(this)">
+                        <div data-photo-status class="text-xs mt-1 font-semibold text-gray-500 min-h-[1.25rem]"></div>
                     </div>
                 </div>
 
-                <div id="item-appliances-17" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
+                <!-- Item 17: Appliances -->
+                <div id="item-appliances-17" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out" data-photo-base64="" data-photo-name="">
                     <div class="flex flex-col justify-between items-start space-y-2">
                         <div class="flex-1 w-full space-y-1">
                             <p class="font-semibold text-gray-800" data-item-name="Appliances">Appliances</p>
@@ -548,15 +631,20 @@
                             <button type="button" data-action="clear" data-item="appliances-17" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
                         </div>
                     </div>
-                    <div class="comment-area space-y-2 mt-3 hidden">
+                    <div class="comment-area space-y-2 mt-3 hidden" data-item-id="appliances-17">
                         <label for="comment-appliances-17" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
                         <textarea id="comment-appliances-17" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
+                        <!-- UPDATED: Photo Upload with camera capture and resizing note -->
+                        <label class="block text-xs font-medium text-gray-600 pt-2">Attach Photo (Will be auto-resized to 1024px):</label>
+                        <input type="file" id="photo-appliances-17" accept="image/*" capture="camera" data-photo-input class="text-xs w-full p-1 border border-gray-300 rounded-md bg-white cursor-pointer" onchange="handlePhotoChange(this)">
+                        <div data-photo-status class="text-xs mt-1 font-semibold text-gray-500 min-h-[1.25rem]"></div>
                     </div>
                 </div>
                 
-                <h2 class="text-xl font-bold text-gray-800 mt-8 pt-4 border-t border-gray-200">Plumbing, Electrical, & Appliance</h2>
+                <h2 class="text-xl font-bold text-gray-800 mt-8 pt-4 border-t border-gray-200">Plumbing, Electrical, & Appliance (Duplicated Section, Retained)</h2>
 
-                <div id="item-water-flow-18" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
+                <!-- Item 18: Water Flow/Pressure -->
+                <div id="item-water-flow-18" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out" data-photo-base64="" data-photo-name="">
                     <div class="flex flex-col justify-between items-start space-y-2">
                         <div class="flex-1 w-full space-y-1">
                             <p class="font-semibold text-gray-800" data-item-name="Water Flow/Pressure">Water Flow/Pressure</p>
@@ -575,13 +663,18 @@
                             <button type="button" data-action="clear" data-item="water-flow-18" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
                         </div>
                     </div>
-                    <div class="comment-area space-y-2 mt-3 hidden">
+                    <div class="comment-area space-y-2 mt-3 hidden" data-item-id="water-flow-18">
                         <label for="comment-water-flow-18" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
                         <textarea id="comment-water-flow-18" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
+                        <!-- UPDATED: Photo Upload with camera capture and resizing note -->
+                        <label class="block text-xs font-medium text-gray-600 pt-2">Attach Photo (Will be auto-resized to 1024px):</label>
+                        <input type="file" id="photo-water-flow-18" accept="image/*" capture="camera" data-photo-input class="text-xs w-full p-1 border border-gray-300 rounded-md bg-white cursor-pointer" onchange="handlePhotoChange(this)">
+                        <div data-photo-status class="text-xs mt-1 font-semibold text-gray-500 min-h-[1.25rem]"></div>
                     </div>
                 </div>
 
-                <div id="item-toilets-19" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
+                <!-- Item 19: Toilets -->
+                <div id="item-toilets-19" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out" data-photo-base64="" data-photo-name="">
                     <div class="flex flex-col justify-between items-start space-y-2">
                         <div class="flex-1 w-full space-y-1">
                             <p class="font-semibold text-gray-800" data-item-name="Toilets">Toilets</p>
@@ -600,13 +693,18 @@
                             <button type="button" data-action="clear" data-item="toilets-19" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
                         </div>
                     </div>
-                    <div class="comment-area space-y-2 mt-3 hidden">
+                    <div class="comment-area space-y-2 mt-3 hidden" data-item-id="toilets-19">
                         <label for="comment-toilets-19" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
                         <textarea id="comment-toilets-19" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
+                        <!-- UPDATED: Photo Upload with camera capture and resizing note -->
+                        <label class="block text-xs font-medium text-gray-600 pt-2">Attach Photo (Will be auto-resized to 1024px):</label>
+                        <input type="file" id="photo-toilets-19" accept="image/*" capture="camera" data-photo-input class="text-xs w-full p-1 border border-gray-300 rounded-md bg-white cursor-pointer" onchange="handlePhotoChange(this)">
+                        <div data-photo-status class="text-xs mt-1 font-semibold text-gray-500 min-h-[1.25rem]"></div>
                     </div>
                 </div>
 
-                <div id="item-water-heater-20" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
+                <!-- Item 20: Water Heater -->
+                <div id="item-water-heater-20" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out" data-photo-base64="" data-photo-name="">
                     <div class="flex flex-col justify-between items-start space-y-2">
                         <div class="flex-1 w-full space-y-1">
                             <p class="font-semibold text-gray-800" data-item-name="Water Heater">Water Heater</p>
@@ -625,13 +723,18 @@
                             <button type="button" data-action="clear" data-item="water-heater-20" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
                         </div>
                     </div>
-                    <div class="comment-area space-y-2 mt-3 hidden">
+                    <div class="comment-area space-y-2 mt-3 hidden" data-item-id="water-heater-20">
                         <label for="comment-water-heater-20" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
                         <textarea id="comment-water-heater-20" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
+                        <!-- UPDATED: Photo Upload with camera capture and resizing note -->
+                        <label class="block text-xs font-medium text-gray-600 pt-2">Attach Photo (Will be auto-resized to 1024px):</label>
+                        <input type="file" id="photo-water-heater-20" accept="image/*" capture="camera" data-photo-input class="text-xs w-full p-1 border border-gray-300 rounded-md bg-white cursor-pointer" onchange="handlePhotoChange(this)">
+                        <div data-photo-status class="text-xs mt-1 font-semibold text-gray-500 min-h-[1.25rem]"></div>
                     </div>
                 </div>
 
-                <div id="item-gfci-21" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
+                <!-- Item 21: GFCI Outlets -->
+                <div id="item-gfci-21" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out" data-photo-base64="" data-photo-name="">
                     <div class="flex flex-col justify-between items-start space-y-2">
                         <div class="flex-1 w-full space-y-1">
                             <p class="font-semibold text-gray-800" data-item-name="GFCI Outlets">GFCI Outlets</p>
@@ -650,13 +753,18 @@
                             <button type="button" data-action="clear" data-item="gfci-21" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
                         </div>
                     </div>
-                    <div class="comment-area space-y-2 mt-3 hidden">
+                    <div class="comment-area space-y-2 mt-3 hidden" data-item-id="gfci-21">
                         <label for="comment-gfci-21" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
                         <textarea id="comment-gfci-21" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
+                        <!-- UPDATED: Photo Upload with camera capture and resizing note -->
+                        <label class="block text-xs font-medium text-gray-600 pt-2">Attach Photo (Will be auto-resized to 1024px):</label>
+                        <input type="file" id="photo-gfci-21" accept="image/*" capture="camera" data-photo-input class="text-xs w-full p-1 border border-gray-300 rounded-md bg-white cursor-pointer" onchange="handlePhotoChange(this)">
+                        <div data-photo-status class="text-xs mt-1 font-semibold text-gray-500 min-h-[1.25rem]"></div>
                     </div>
                 </div>
 
-                <div id="item-switches-22" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
+                <!-- Item 22: Switches & Outlets -->
+                <div id="item-switches-22" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out" data-photo-base64="" data-photo-name="">
                     <div class="flex flex-col justify-between items-start space-y-2">
                         <div class="flex-1 w-full space-y-1">
                             <p class="font-semibold text-gray-800" data-item-name="Switches & Outlets">Switches & Outlets</p>
@@ -675,13 +783,18 @@
                             <button type="button" data-action="clear" data-item="switches-22" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
                         </div>
                     </div>
-                    <div class="comment-area space-y-2 mt-3 hidden">
+                    <div class="comment-area space-y-2 mt-3 hidden" data-item-id="switches-22">
                         <label for="comment-switches-22" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
                         <textarea id="comment-switches-22" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
+                        <!-- UPDATED: Photo Upload with camera capture and resizing note -->
+                        <label class="block text-xs font-medium text-gray-600 pt-2">Attach Photo (Will be auto-resized to 1024px):</label>
+                        <input type="file" id="photo-switches-22" accept="image/*" capture="camera" data-photo-input class="text-xs w-full p-1 border border-gray-300 rounded-md bg-white cursor-pointer" onchange="handlePhotoChange(this)">
+                        <div data-photo-status class="text-xs mt-1 font-semibold text-gray-500 min-h-[1.25rem]"></div>
                     </div>
                 </div>
 
-                <div id="item-alarms-23" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
+                <!-- Item 23: Smoke/Carbon Monoxide Alarms -->
+                <div id="item-alarms-23" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out" data-photo-base64="" data-photo-name="">
                     <div class="flex flex-col justify-between items-start space-y-2">
                         <div class="flex-1 w-full space-y-1">
                             <p class="font-semibold text-gray-800" data-item-name="Smoke/Carbon Monoxide Alarms">Smoke/Carbon Monoxide Alarms</p>
@@ -700,13 +813,18 @@
                             <button type="button" data-action="clear" data-item="alarms-23" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
                         </div>
                     </div>
-                    <div class="comment-area space-y-2 mt-3 hidden">
+                    <div class="comment-area space-y-2 mt-3 hidden" data-item-id="alarms-23">
                         <label for="comment-alarms-23" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
                         <textarea id="comment-alarms-23" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
+                        <!-- UPDATED: Photo Upload with camera capture and resizing note -->
+                        <label class="block text-xs font-medium text-gray-600 pt-2">Attach Photo (Will be auto-resized to 1024px):</label>
+                        <input type="file" id="photo-alarms-23" accept="image/*" capture="camera" data-photo-input class="text-xs w-full p-1 border border-gray-300 rounded-md bg-white cursor-pointer" onchange="handlePhotoChange(this)">
+                        <div data-photo-status class="text-xs mt-1 font-semibold text-gray-500 min-h-[1.25rem]"></div>
                     </div>
                 </div>
 
-                <div id="item-appliances-24" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
+                <!-- Item 24: Appliances -->
+                <div id="item-appliances-24" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out" data-photo-base64="" data-photo-name="">
                     <div class="flex flex-col justify-between items-start space-y-2">
                         <div class="flex-1 w-full space-y-1">
                             <p class="font-semibold text-gray-800" data-item-name="Appliances">Appliances</p>
@@ -725,15 +843,20 @@
                             <button type="button" data-action="clear" data-item="appliances-24" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
                         </div>
                     </div>
-                    <div class="comment-area space-y-2 mt-3 hidden">
+                    <div class="comment-area space-y-2 mt-3 hidden" data-item-id="appliances-24">
                         <label for="comment-appliances-24" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
                         <textarea id="comment-appliances-24" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
+                        <!-- UPDATED: Photo Upload with camera capture and resizing note -->
+                        <label class="block text-xs font-medium text-gray-600 pt-2">Attach Photo (Will be auto-resized to 1024px):</label>
+                        <input type="file" id="photo-appliances-24" accept="image/*" capture="camera" data-photo-input class="text-xs w-full p-1 border border-gray-300 rounded-md bg-white cursor-pointer" onchange="handlePhotoChange(this)">
+                        <div data-photo-status class="text-xs mt-1 font-semibold text-gray-500 min-h-[1.25rem]"></div>
                     </div>
                 </div>
                 
                 <h2 class="text-xl font-bold text-gray-800 mt-8 pt-4 border-t border-gray-200">Exterior & HVAC</h2>
 
-                <div id="item-siding" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
+                <!-- Item 25: Siding & Skirting -->
+                <div id="item-siding" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out" data-photo-base64="" data-photo-name="">
                     <div class="flex flex-col justify-between items-start space-y-2">
                         <div class="flex-1 w-full space-y-1">
                             <p class="font-semibold text-gray-800" data-item-name="Siding & Skirting">Siding & Skirting</p>
@@ -752,13 +875,18 @@
                             <button type="button" data-action="clear" data-item="siding" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
                         </div>
                     </div>
-                    <div class="comment-area space-y-2 mt-3 hidden">
+                    <div class="comment-area space-y-2 mt-3 hidden" data-item-id="siding">
                         <label for="comment-siding" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
                         <textarea id="comment-siding" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
+                        <!-- UPDATED: Photo Upload with camera capture and resizing note -->
+                        <label class="block text-xs font-medium text-gray-600 pt-2">Attach Photo (Will be auto-resized to 1024px):</label>
+                        <input type="file" id="photo-siding" accept="image/*" capture="camera" data-photo-input class="text-xs w-full p-1 border border-gray-300 rounded-md bg-white cursor-pointer" onchange="handlePhotoChange(this)">
+                        <div data-photo-status class="text-xs mt-1 font-semibold text-gray-500 min-h-[1.25rem]"></div>
                     </div>
                 </div>
 
-                <div id="item-roof" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
+                <!-- Item 26: Roof Vents/Shingles -->
+                <div id="item-roof" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out" data-photo-base64="" data-photo-name="">
                     <div class="flex flex-col justify-between items-start space-y-2">
                         <div class="flex-1 w-full space-y-1">
                             <p class="font-semibold text-gray-800" data-item-name="Roof Vents/Shingles">Roof Vents/Shingles</p>
@@ -777,13 +905,18 @@
                             <button type="button" data-action="clear" data-item="roof" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
                         </div>
                     </div>
-                    <div class="comment-area space-y-2 mt-3 hidden">
+                    <div class="comment-area space-y-2 mt-3 hidden" data-item-id="roof">
                         <label for="comment-roof" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
                         <textarea id="comment-roof" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
+                        <!-- UPDATED: Photo Upload with camera capture and resizing note -->
+                        <label class="block text-xs font-medium text-gray-600 pt-2">Attach Photo (Will be auto-resized to 1024px):</label>
+                        <input type="file" id="photo-roof" accept="image/*" capture="camera" data-photo-input class="text-xs w-full p-1 border border-gray-300 rounded-md bg-white cursor-pointer" onchange="handlePhotoChange(this)">
+                        <div data-photo-status class="text-xs mt-1 font-semibold text-gray-500 min-h-[1.25rem]"></div>
                     </div>
                 </div>
 
-                <div id="item-hvac" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
+                <!-- Item 27: HVAC (Heat/AC) -->
+                <div id="item-hvac" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out" data-photo-base64="" data-photo-name="">
                     <div class="flex flex-col justify-between items-start space-y-2">
                         <div class="flex-1 w-full space-y-1">
                             <p class="font-semibold text-gray-800" data-item-name="HVAC (Heat/AC)">HVAC (Heat/AC)</p>
@@ -802,13 +935,18 @@
                             <button type="button" data-action="clear" data-item="hvac" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
                         </div>
                     </div>
-                    <div class="comment-area space-y-2 mt-3 hidden">
+                    <div class="comment-area space-y-2 mt-3 hidden" data-item-id="hvac">
                         <label for="comment-hvac" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
                         <textarea id="comment-hvac" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
+                        <!-- UPDATED: Photo Upload with camera capture and resizing note -->
+                        <label class="block text-xs font-medium text-gray-600 pt-2">Attach Photo (Will be auto-resized to 1024px):</label>
+                        <input type="file" id="photo-hvac" accept="image/*" capture="camera" data-photo-input class="text-xs w-full p-1 border border-gray-300 rounded-md bg-white cursor-pointer" onchange="handlePhotoChange(this)">
+                        <div data-photo-status class="text-xs mt-1 font-semibold text-gray-500 min-h-[1.25rem]"></div>
                     </div>
                 </div>
 
-                <div id="item-ductwork" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
+                <!-- Item 28: Ductwork/Vents -->
+                <div id="item-ductwork" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out" data-photo-base64="" data-photo-name="">
                     <div class="flex flex-col justify-between items-start space-y-2">
                         <div class="flex-1 w-full space-y-1">
                             <p class="font-semibold text-gray-800" data-item-name="Ductwork/Vents">Ductwork/Vents</p>
@@ -827,13 +965,18 @@
                             <button type="button" data-action="clear" data-item="ductwork" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
                         </div>
                     </div>
-                    <div class="comment-area space-y-2 mt-3 hidden">
+                    <div class="comment-area space-y-2 mt-3 hidden" data-item-id="ductwork">
                         <label for="comment-ductwork" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
                         <textarea id="comment-ductwork" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
+                        <!-- UPDATED: Photo Upload with camera capture and resizing note -->
+                        <label class="block text-xs font-medium text-gray-600 pt-2">Attach Photo (Will be auto-resized to 1024px):</label>
+                        <input type="file" id="photo-ductwork" accept="image/*" capture="camera" data-photo-input class="text-xs w-full p-1 border border-gray-300 rounded-md bg-white cursor-pointer" onchange="handlePhotoChange(this)">
+                        <div data-photo-status class="text-xs mt-1 font-semibold text-gray-500 min-h-[1.25rem]"></div>
                     </div>
                 </div>
 
-                <div id="item-leveling" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
+                <!-- Item 29: Home Leveling -->
+                <div id="item-leveling" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out" data-photo-base64="" data-photo-name="">
                     <div class="flex flex-col justify-between items-start space-y-2">
                         <div class="flex-1 w-full space-y-1">
                             <p class="font-semibold text-gray-800" data-item-name="Home Leveling">Home Leveling</p>
@@ -852,13 +995,18 @@
                             <button type="button" data-action="clear" data-item="leveling" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
                         </div>
                     </div>
-                    <div class="comment-area space-y-2 mt-3 hidden">
+                    <div class="comment-area space-y-2 mt-3 hidden" data-item-id="leveling">
                         <label for="comment-leveling" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
                         <textarea id="comment-leveling" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
+                        <!-- UPDATED: Photo Upload with camera capture and resizing note -->
+                        <label class="block text-xs font-medium text-gray-600 pt-2">Attach Photo (Will be auto-resized to 1024px):</label>
+                        <input type="file" id="photo-leveling" accept="image/*" capture="camera" data-photo-input class="text-xs w-full p-1 border border-gray-300 rounded-md bg-white cursor-pointer" onchange="handlePhotoChange(this)">
+                        <div data-photo-status class="text-xs mt-1 font-semibold text-gray-500 min-h-[1.25rem]"></div>
                     </div>
                 </div>
 
-                <div id="item-tie-downs" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out">
+                <!-- Item 30: Tie-Downs/Anchors -->
+                <div id="item-tie-downs" class="warranty-item border p-4 rounded-lg bg-gray-50 transition duration-150 ease-in-out" data-photo-base64="" data-photo-name="">
                     <div class="flex flex-col justify-between items-start space-y-2">
                         <div class="flex-1 w-full space-y-1">
                             <p class="font-semibold text-gray-800" data-item-name="Tie-Downs/Anchors">Tie-Downs/Anchors</p>
@@ -877,16 +1025,20 @@
                             <button type="button" data-action="clear" data-item="tie-downs" class="btn-clear py-1 px-3 bg-gray-200 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-300 transition duration-150 ease-in-out">Clear</button>
                         </div>
                     </div>
-                    <div class="comment-area space-y-2 mt-3 hidden">
+                    <div class="comment-area space-y-2 mt-3 hidden" data-item-id="tie-downs">
                         <label for="comment-tie-downs" class="block text-xs font-medium text-gray-600">Additional Comments:</label>
                         <textarea id="comment-tie-downs" rows="2" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500"></textarea>
+                        <!-- UPDATED: Photo Upload with camera capture and resizing note -->
+                        <label class="block text-xs font-medium text-gray-600 pt-2">Attach Photo (Will be auto-resized to 1024px):</label>
+                        <input type="file" id="photo-tie-downs" accept="image/*" capture="camera" data-photo-input class="text-xs w-full p-1 border border-gray-300 rounded-md bg-white cursor-pointer" onchange="handlePhotoChange(this)">
+                        <div data-photo-status class="text-xs mt-1 font-semibold text-gray-500 min-h-[1.25rem]"></div>
                     </div>
                 </div>
 
             </div>
             <div class="mt-6">
                 <button type="submit" id="submit-btn" class="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 rounded-full text-white font-bold text-lg transition duration-150 ease-in-out shadow-lg">
-                    Review and Submit
+                    Submit
                 </button>
             </div>
         </form>
@@ -895,6 +1047,109 @@
     </div>
 
     <script>
+        // --- UTILITY FUNCTIONS ---
+
+        /**
+         * Resizes an image loaded from a File object and converts it to a compressed Base64 JPEG URI.
+         * Enforces a maximum dimension (MAX_WIDTH) for reliable email transmission.
+         * @param {File} file - The image file to process.
+         * @returns {Promise<string|null>} - Compressed Base64 data URI string or null if conversion fails.
+         */
+        function resizeAndConvertToBase64(file) {
+            return new Promise((resolve, reject) => {
+                if (!file) return resolve(null);
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const img = new Image();
+                    img.onload = function() {
+                        const MAX_WIDTH = 1024;
+                        const MAX_HEIGHT = 1024;
+                        const MIME_TYPE = 'image/jpeg';
+                        const QUALITY = 0.7; // 70% compression for JPEG
+
+                        let width = img.width;
+                        let height = img.height;
+
+                        // Calculate new dimensions to fit within MAX_WIDTH/MAX_HEIGHT while maintaining aspect ratio
+                        if (width > height) {
+                            if (width > MAX_WIDTH) {
+                                height *= MAX_WIDTH / width;
+                                width = MAX_WIDTH;
+                            }
+                        } else {
+                            if (height > MAX_HEIGHT) {
+                                width *= MAX_HEIGHT / height;
+                                height = MAX_HEIGHT;
+                            }
+                        }
+                        
+                        const canvas = document.createElement('canvas');
+                        canvas.width = width;
+                        canvas.height = height;
+                        
+                        const ctx = canvas.getContext('2d');
+                        // Draw the image at the new size
+                        ctx.drawImage(img, 0, 0, width, height);
+                        
+                        // Convert canvas content to compressed JPEG Base64 string
+                        const base64Data = canvas.toDataURL(MIME_TYPE, QUALITY);
+                        resolve(base64Data);
+                    };
+                    img.onerror = reject;
+                    img.src = event.target.result;
+                };
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
+            });
+        }
+
+
+        /**
+         * Handles the file input change, performs resizing, and stores the Base64 data.
+         * @param {HTMLInputElement} fileInput - The file input element that triggered the change.
+         */
+        async function handlePhotoChange(fileInput) {
+            const itemDiv = fileInput.closest('.warranty-item');
+            const statusDiv = itemDiv.querySelector('[data-photo-status]');
+
+            const file = fileInput.files[0];
+            
+            // Clear previous status and stored data
+            statusDiv.textContent = '';
+            itemDiv.dataset.photoBase64 = '';
+            itemDiv.dataset.photoName = '';
+            statusDiv.classList.remove('photo-ready', 'photo-error', 'text-blue-500');
+
+            if (!file) return;
+
+            statusDiv.classList.add('text-blue-500');
+            statusDiv.innerHTML = 'Processing image... (Auto-resizing)'; // Added feedback
+            
+            // The file size check is now largely replaced by the aggressive compression/resizing
+            // but a *very* large initial file might be slow to load, so we'll allow all.
+
+            try {
+                // Use the new resizing and compression utility
+                const base64 = await resizeAndConvertToBase64(file);
+                
+                // Store Base64 and name on the parent item div's dataset
+                itemDiv.dataset.photoBase64 = base64;
+                itemDiv.dataset.photoName = file.name;
+                
+                statusDiv.classList.remove('text-blue-500');
+                statusDiv.classList.add('photo-ready');
+                statusDiv.innerHTML = `✅ Photo attached: <strong>${file.name}</strong> (Resized)`;
+                
+            } catch (error) {
+                console.error("Image processing failed:", error);
+                statusDiv.classList.remove('text-blue-500');
+                statusDiv.classList.add('photo-error');
+                statusDiv.innerHTML = `❌ Error processing image. Try a smaller file.`;
+                fileInput.value = '';
+            }
+        }
+
+
         (function() {
             // !!! IMPORTANT: REPLACE THESE WITH YOUR ACTUAL EmailJS CREDENTIALS !!!
             const USER_ID = 'bSgwpRuVeEky48mPe';  
@@ -918,7 +1173,7 @@
             const contactEmailInput = document.getElementById('contact-email');
 
 
-            // --- CHECKLIST LOGIC (Remains the same) ---
+            // --- CHECKLIST LOGIC (UPDATED to clear photo data) ---
             checklistContainer.addEventListener('click', function(event) {
                 const button = event.target.closest('button');
                 if (!button) return;
@@ -928,6 +1183,8 @@
                 const issueInput = itemDiv.querySelector('[data-item-input]');
                 const commentArea = itemDiv.querySelector('.comment-area');
                 const commentInput = commentArea.querySelector('textarea');
+                const photoInput = itemDiv.querySelector('[data-photo-input]');
+                const photoStatus = itemDiv.querySelector('[data-photo-status]');
                 
                 // 1. Remove all active button classes
                 itemDiv.querySelectorAll('button[data-action]').forEach(btn => {
@@ -943,15 +1200,23 @@
                     issueInput.value = 'OK'; 
                     commentArea.classList.add('hidden');
                     commentInput.value = ''; 
+                    
+                    // Clear image specific fields
+                    itemDiv.dataset.photoBase64 = '';
+                    itemDiv.dataset.photoName = '';
+                    if (photoInput) photoInput.value = '';
+                    if (photoStatus) {
+                        photoStatus.textContent = '';
+                        photoStatus.classList.remove('photo-ready', 'photo-error', 'text-blue-500');
+                    }
                 } else if (action === 'issue') {
                     button.classList.add('btn-issue-active');
                     itemDiv.classList.add('status-issue');
                     
                     const itemName = itemDiv.querySelector('[data-item-name]').textContent.trim();
                     const itemLocation = itemDiv.querySelector('[data-item-location]').textContent.trim();
-                    const itemCheck = itemDiv.querySelector('[data-item-check]').textContent.replace('Check: ', '').trim();
 
-                    // CHANGE 1: Simplify the data stored in the hidden input to just the Issue Description and Location.
+                    // Simplify the data stored in the hidden input to just the Issue Description and Location.
                     issueInput.value = `${itemName} (Location: ${itemLocation})`;
                     
                     commentArea.classList.remove('hidden'); 
@@ -960,6 +1225,15 @@
                     issueInput.value = ''; 
                     commentInput.value = '';
                     commentArea.classList.add('hidden'); 
+                    
+                    // Clear image specific fields
+                    itemDiv.dataset.photoBase64 = '';
+                    itemDiv.dataset.photoName = '';
+                    if (photoInput) photoInput.value = '';
+                    if (photoStatus) {
+                        photoStatus.textContent = '';
+                        photoStatus.classList.remove('photo-ready', 'photo-error', 'text-blue-500');
+                    }
                 }
             });
             // --- END CHECKLIST LOGIC ---
@@ -975,7 +1249,7 @@
                 otherCommunityInput.name = 'home-address-unused';
                 otherCommunityInput.value = '';
 
-                // Reset checklist items visually and internally
+                // Reset checklist items visually and internally (including photo data)
                 document.querySelectorAll('.warranty-item').forEach(item => {
                     item.classList.remove('status-ok', 'status-issue', 'unaddressed-item');
                     item.querySelector('[data-item-input]').value = '';
@@ -984,6 +1258,17 @@
                     item.querySelectorAll('button[data-action]').forEach(btn => {
                         btn.classList.remove('btn-ok-active', 'btn-issue-active');
                     });
+
+                    // Clear photo data
+                    item.dataset.photoBase64 = '';
+                    item.dataset.photoName = '';
+                    const photoInput = item.querySelector('[data-photo-input]');
+                    const photoStatus = item.querySelector('[data-photo-status]');
+                    if (photoInput) photoInput.value = '';
+                    if (photoStatus) {
+                        photoStatus.textContent = '';
+                        photoStatus.classList.remove('photo-ready', 'photo-error', 'text-blue-500');
+                    }
                 });
                 
                 formMainContent.style.display = 'block';
@@ -1007,6 +1292,12 @@
 
             document.getElementById('parts-form').addEventListener('submit', function(event) {
                 event.preventDefault();
+
+                // Disable button and show loading status
+                submitBtn.disabled = true;
+                statusDiv.classList.remove('hidden', 'bg-green-100', 'text-green-800', 'bg-red-100', 'text-red-800');
+                statusDiv.classList.add('bg-blue-100', 'text-blue-800');
+                statusDiv.innerHTML = 'Sending request... Please wait.';
 
                 // 1. INITIAL FORM VALIDATION (Browser check for required HTML fields)
                 if (!form.checkValidity()) {
@@ -1038,6 +1329,8 @@
                 // 3. COMPILE CHECKLIST ISSUES (At least one Issue must be marked)
                 let issuesString = '';
                 let hasIssue = false;
+                let photoCount = 0;
+                const photoParams = {};
                 
                 document.querySelectorAll('.warranty-item').forEach((item, index) => {
                     const issueInput = item.querySelector('[data-item-input]');
@@ -1047,11 +1340,29 @@
                     if (value && value !== 'OK') {
                         hasIssue = true;
                         
-                        // CHANGE 2: Report only the value (Issue/Location) and the comment.
                         let itemReport = `Issue Reported: ${value}`;
                         
+                        // Include comment
                         if (commentInput && commentInput.value.trim().length > 0) {
                             itemReport += `\n    Comment: ${commentInput.value.trim()}`;
+                        }
+                        
+                        // NEW: Include photo data
+                        const photoBase64 = item.dataset.photoBase64;
+                        const photoName = item.dataset.photoName;
+
+                        if (photoBase64 && photoName) {
+                            if (photoCount < 5) { // Limit to 5 photos for reasonable email size
+                                photoCount++;
+                                // Pass Base64 data and name as dedicated parameters for the EmailJS template
+                                photoParams[`photo_${photoCount}_name`] = photoName;
+                                photoParams[`photo_${photoCount}_data`] = photoBase64;
+                                itemReport += `\n    Photo: Yes (Attached as Photo ${photoCount} - Resized)`; // Updated report text
+                            } else {
+                                itemReport += `\n    Photo: Yes (Limit of 5 photos reached, this photo was NOT attached to email.)`;
+                            }
+                        } else {
+                            itemReport += `\n    Photo: No`;
                         }
                         issuesString += itemReport + '\n\n';
                     }
@@ -1065,13 +1376,6 @@
                     submitBtn.disabled = false;
                     return;
                 }
-                
-                // Show sending status
-                statusDiv.classList.remove('hidden', 'bg-green-100', 'text-green-800', 'bg-red-100', 'text-red-800');
-                statusDiv.classList.add('bg-blue-100', 'text-blue-800');
-                statusDiv.innerHTML = 'Sending request... Please wait.';
-                
-                submitBtn.disabled = true;
                 
                 // Determine the final community value
                 const finalCommunity = communitySelect.value === 'Other'  
@@ -1091,7 +1395,10 @@
                     'serial-number': form.elements['serial-number'].value,
                     'home-manufacturer': form.elements['home-manufacturer'].value,
                     'part-description': issuesString, 
-                    'secondary_email': SECONDARY_EMAIL 
+                    'secondary_email': SECONDARY_EMAIL, 
+                    
+                    // NEW: Dynamically added photo parameters (up to 5)
+                    ...photoParams 
                 };
                 
                 // SEND EMAILS
