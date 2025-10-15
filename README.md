@@ -951,7 +951,8 @@
                     const itemLocation = itemDiv.querySelector('[data-item-location]').textContent.trim();
                     const itemCheck = itemDiv.querySelector('[data-item-check]').textContent.replace('Check: ', '').trim();
 
-                    issueInput.value = `ISSUE: ${itemName} (Location: ${itemLocation}). Check: ${itemCheck}`;
+                    // CHANGE 1: Simplify the data stored in the hidden input to just the Issue Description and Location.
+                    issueInput.value = `${itemName} (Location: ${itemLocation})`;
                     
                     commentArea.classList.remove('hidden'); 
 
@@ -1046,7 +1047,8 @@
                     if (value && value !== 'OK') {
                         hasIssue = true;
                         
-                        let itemReport = `Item #${index + 1}: ${value}`;
+                        // CHANGE 2: Report only the value (Issue/Location) and the comment.
+                        let itemReport = `Issue Reported: ${value}`;
                         
                         if (commentInput && commentInput.value.trim().length > 0) {
                             itemReport += `\n    Comment: ${commentInput.value.trim()}`;
