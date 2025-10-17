@@ -51,7 +51,9 @@
 <body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
     <div class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-2xl border border-gray-200">
         <h1 class="text-3xl font-bold text-center text-gray-800 mb-2">21-Day Move-in Warranty Checklist</h1>
-        <p class="text-center text-gray-500 mb-6">Fill out the form below to submit a request.</p>
+        <p class="text-center text-gray-500 mb-6">
+            This checklist is designed to help you inspect your new manufactured home for cosmetic and minor functional issues that should be addressed under the initial <strong class="font-bold text-gray-700">21-day warranty</strong>. Mark <strong class="font-bold text-gray-700">(OK)</strong> if the item is acceptable or <strong class="font-bold text-gray-700">(ISSUE)</strong> if it requires attention and then give a brief description of the issue. This form is required to be submitted by the <strong class="font-bold text-gray-700">21st day</strong> of moving into your new home to receive repairs or replacements. If this form in its entirety is not submitted by the <strong class="font-bold text-gray-700">21st day</strong>, the responsibility of the repairs may fall to you as the homeowner.
+        </p>
         
         <form id="parts-form" class="space-y-4">
             
@@ -904,7 +906,6 @@
                             itemReport += `\n    Comment: ${commentInput.value.trim()}`;
                         }
                         
-                        // REMOVED PHOTO DISCLAIMER FROM EMAIL BODY
                         issuesString += itemReport + '\n\n';
                     }
                 });
@@ -949,7 +950,6 @@
                     .then(function() {
                         statusDiv.classList.remove('bg-blue-100', 'text-blue-800');
                         statusDiv.classList.add('bg-green-100', 'text-green-800');
-                        // REMOVED PHOTO DISCLAIMER FROM SUCCESS MESSAGE
                         statusDiv.innerHTML = '<strong>Success!</strong> Your request has been sent. A confirmation email has been sent to your address. <br><br> <button id="continue-btn" class="py-2 px-4 mt-2 bg-blue-600 hover:bg-blue-700 rounded-full text-white font-bold transition duration-150 ease-in-out">Submit Another Request</button>';
                         
                         formMainContent.style.display = 'none'; 
